@@ -34,7 +34,7 @@ public class User {
     private String contactInfo;
 
     @Column
-    private String joinDate;
+    private LocalDate joinDate;
 
     @Column
     private String name;
