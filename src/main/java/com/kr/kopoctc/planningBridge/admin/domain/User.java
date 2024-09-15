@@ -1,4 +1,4 @@
-package com.kr.kopoctc.planningBridge.admin.entity;
+package com.kr.kopoctc.planningBridge.admin.domain;
 
 import lombok.Getter;
 import lombok.Setter;

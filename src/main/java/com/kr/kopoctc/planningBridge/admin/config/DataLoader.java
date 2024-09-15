@@ -1,14 +1,18 @@
 package com.kr.kopoctc.planningBridge.admin.config;
 
-import com.kr.kopoctc.planningBridge.admin.entity.User;
+import com.kr.kopoctc.planningBridge.admin.domain.User;
 import com.kr.kopoctc.planningBridge.admin.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 
 @Configuration
+//@Profile("!test")
+@Slf4j
 public class DataLoader {
     @Bean
     public CommandLineRunner loadData(UserRepository userRepository) {
@@ -54,7 +58,26 @@ public class DataLoader {
 
             userRepository.save(user2);
 
-            // 필요한 만큼 더미 데이터를 추가할 수 있습니다.
+            User user3 = new User();
+            user3.setAccount("test01");
+            user3.setPassword("testpassword");
+            user3.setEmail("test@example.com");
+            user3.setContactInfo("010-4315-1158");
+            user3.setJoinDate(LocalDate.now());
+            user3.setName("test user");
+            user3.setStatus(true);
+            user3.setLastChanagedPassword(LocalDate.now());
+            user3.setPasswordExpired(false);
+            user3.setCheckAdmin(false);
+            user3.setCheckGuest(false);
+            user3.setDepartmentPK("DEPT003");
+            user3.setPositionPK("POS003");
+            user3.setCreatedDate(LocalDate.now());
+            user3.setUpdatedDate(LocalDate.now());
+
+            userRepository.save(user3);
+
+            log.info("DataLoader 실행");
         };
     }
 }

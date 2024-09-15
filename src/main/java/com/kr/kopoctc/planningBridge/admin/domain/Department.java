@@ -1,14 +1,14 @@
-package com.kr.kopoctc.planningBridge.admin.entity;
+package com.kr.kopoctc.planningBridge.admin.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class Position {
+public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long positionPK;
+    private Long departmentPK;
 
     @Column
     private String name;
