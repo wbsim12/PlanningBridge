@@ -1,4 +1,4 @@
-package com.kr.kopoctc.planningBridge.admin.entity;
+package com.kr.kopoctc.planningBridge.admin.domain;
 
 import com.kr.kopoctc.planningBridge.admin.enums.UserType;
 import lombok.Getter;
