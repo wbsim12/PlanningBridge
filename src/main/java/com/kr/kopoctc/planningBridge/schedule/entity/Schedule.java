@@ -1,15 +1,19 @@
 package com.kr.kopoctc.planningBridge.schedule.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.kr.kopoctc.planningBridge.admin.domain.User;
+import com.kr.kopoctc.planningBridge.common.Priority;
+import com.kr.kopoctc.planningBridge.common.RepeatStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import org.w3c.dom.Text;
 
-import java.sql.Timestamp;
+
+
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 @Getter
 @Setter
@@ -19,10 +23,10 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String schedule_pk;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime start_date;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime end_date;
 
     @Column
@@ -31,15 +35,19 @@ public class Schedule {
     @Column
     private String detail;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Priority priority;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RepeatStatus repeatStatus;
+
     @Column
-    private String priority;
+    private boolean type;
 
-//    @Column
-//    enum repeat_status;
-
-    @Column
-    boolean type;
-
-//    @Column
-//    String user_pk;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn
+    @JsonBackReference
+    private User user;
 }
