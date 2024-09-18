@@ -1,4 +1,4 @@
-package com.kr.kopoctc.planningBridge.task.domain;
+package com.kr.kopoctc.planningBridge.task.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -20,7 +20,7 @@ public class TaskHistory {
     private String changedDetail;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_PK")
+    @JoinColumn(name = "taskpk")
     @JsonBackReference
     private Task task;
 }

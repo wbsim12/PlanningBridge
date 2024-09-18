@@ -1,4 +1,4 @@
-package com.kr.kopoctc.planningBridge.task.domain;
+package com.kr.kopoctc.planningBridge.task.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kr.kopoctc.planningBridge.common.ConfirmStatus;
@@ -20,7 +20,7 @@ public class ConfirmResult {
     private String date;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "ConfirmRequestPK")
+    @JoinColumn(name = "confirm_requestpk")
     @JsonBackReference
     private ConfirmRequest confirmRequest;
 
