@@ -20,27 +20,26 @@ public class Schedule {
     private String schedule_pk;
 
     @Column
-    LocalDateTime start_date;
+    private LocalDateTime start_date;
 
     @Column
-    LocalDateTime end_date;
+    private LocalDateTime end_date;
 
     @Column
-    String title;
+    private String title;
 
     @Column
-    Text detail;
+    private String detail;
 
     @Column
-    String priority;
+    private String priority;
 
-    @Column
-    enum repeat_status;
+//    @Column
+//    enum repeat_status;
 
     @Column
     boolean type;
 
-    @Column
-    @OneToMany
-    String user_pk;
+//    @Column
+//    String user_pk;
 }
