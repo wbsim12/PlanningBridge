@@ -1,15 +1,13 @@
 package com.kr.kopoctc.planningBridge.admin.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
+@Builder
 @Table(name = "users")
 @Getter
 @Setter
@@ -31,28 +29,25 @@ public class User {
     private String email;
 
     @Column
-    private String contactInfo;
-
-    @Column
-    private LocalDate joinDate;
+    private String phoneNumber;
 
     @Column
     private String name;
 
     @Column
-    private boolean status;
+    private boolean isActive = false;
 
     @Column
-    private LocalDate lastChanagedPassword;
+    private LocalDateTime lastChanagedPassword;
 
     @Column
-    private boolean passwordExpired;
+    private boolean passwordExpired = false;
 
     @Column
-    private boolean checkAdmin;
+    private boolean checkAdmin = false;
 
     @Column
-    private boolean checkGuest;
+    private boolean checkGuest = false;
 
     @Column
     private String departmentPK;
@@ -61,9 +56,8 @@ public class User {
     private String positionPK;
 
     @Column
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
     @Column
-    private LocalDate updatedDate;
-
+    private LocalDateTime updatedDate;
 }

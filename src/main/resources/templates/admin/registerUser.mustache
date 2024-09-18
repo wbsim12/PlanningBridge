@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="/css/registerUser.css">
+</head>
+<body>
+<div class="container">
+    <h1>User Registration</h1>
+
+    <form action="/registerUser" method="post">
+        <div class="form-group">
+            <label for="account">Account*:</label>
+            <input type="text" id="account" name="account" value="{{userDTO.account}}">
+            {{#errors.account}}
+                    <div class="error-message">{{defaultMessage}}</div>
+            {{/errors.account}}
+            {{#errorMessage}}
+                <div class="error-message">{{errorMessage}}</div>
+            {{/errorMessage}}
+
+        </div>
+        <div class="form-group">
+            <label for="password">Password*:</label>
+            <input type="password" id="password" name="password" value="{{userDTO.password}}">
+            {{#errors}}
+                {{#fields.password}}
+                    <div class="error-message">{{defaultMessage}}</div>
+                {{/fields.password}}
+            {{/errors}}
+        </div>
+        <div class="form-group">
+            <label for="email">Email*:</label>
+            <input type="email" id="email" name="email" value="{{userDTO.email}}">
+            {{#errors}}
+                {{#fields.email}}
+                    <div class="error-message">{{defaultMessage}}</div>
+                {{/fields.email}}
+            {{/errors}}
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" value="{{userDTO.phoneNumber}}">
+            {{#errors}}
+                {{#fields.phoneNumber}}
+                    <div class="error-message">{{defaultMessage}}</div>
+                {{/fields.phoneNumber}}
+            {{/errors}}
+        </div>
+        <div class="form-group">
+            <label for="name">Name*:</label>
+            <input type="text" id="name" name="name" value="{{userDTO.name}}">
+            {{#errors}}
+                {{#fields.name}}
+                    <div class="error-message">{{defaultMessage}}</div>
+                {{/fields.name}}
+            {{/errors}}
+        </div>
+        <div class="form-group">
+            <label for="checkAdmin">Admin:</label>
+            <input type="checkbox" id="checkAdmin" name="checkAdmin">
+        </div>
+        <div class="form-group">
+            <label for="checkGuest">Guest:</label>
+            <input type="checkbox" id="checkGuest" name="checkGuest">
+        </div>
+        <div class="form-group">
+            <label for="departmentPK">Department:</label>
+            <select id="departmentPK" name="departmentPK">
+                <option value="">Select Department</option>
+                <option value="DEPT001">Human Resources</option>
+                <option value="DEPT002">Finance</option>
+                <option value="DEPT003">IT</option>
+                <option value="DEPT004">Marketing</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="positionPK">Position:</label>
+            <select id="positionPK" name="positionPK">
+                <option value="">Select Position</option>
+                <option value="POS001">부장</option>
+                <option value="POS002">대리</option>
+                <option value="POS003">주임</option>
+                <option value="POS004">사원</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
