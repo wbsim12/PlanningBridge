@@ -22,11 +22,11 @@ public class ScheduleForm {
     String title;
     Text detail;
     String priority;
-    enum repeat_status;
+//    enum repeat_status;
     boolean type;
     String user_pk;
 
-    public void toEntity(){
-        return new Schedule(schedule_pk, start_date, end_date, title, detail, priority, repeat_status, type, user_pk);
-    }
+//    public void toEntity(){
+//        return new Schedule(schedule_pk, start_date, end_date, title, detail, priority, repeat_status, type, user_pk);
+//    }
 }
