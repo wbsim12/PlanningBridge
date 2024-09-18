@@ -1,4 +1,4 @@
-package com.example.planningBridge;
+package com.kr.kopoctc.planningBridge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
