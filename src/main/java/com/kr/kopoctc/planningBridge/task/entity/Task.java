@@ -25,7 +25,7 @@ public class Task {
     private String name;
     private String startDate;
     private String endDate;
-    private String desc;
+    private String description;
     private Priority priority;
     private TaskStatus status;
     private String createdDate;
@@ -39,7 +39,7 @@ public class Task {
 
     // 셀프조인
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_pk", insertable = false, updatable = false)
+    @JoinColumn(name = "parent_task_pk")
     private Task parentTask;
 
     @OneToMany (mappedBy = "parentTask", cascade = CascadeType.ALL)
