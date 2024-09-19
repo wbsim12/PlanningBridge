@@ -17,6 +17,6 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private List<User> users;
 
-    @Column
+    @Column(name="name")
     private String name;
 }
