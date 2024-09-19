@@ -1,6 +1,8 @@
 package com.kr.kopoctc.planningBridge.admin.service;
 
-import com.kr.kopoctc.planningBridge.admin.domain.User;
+import com.kr.kopoctc.planningBridge.admin.entity.Department;
+import com.kr.kopoctc.planningBridge.admin.entity.Position;
+import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.kr.kopoctc.planningBridge.admin.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,7 +23,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(UserDTO userDTO) {
+
+        Department department = new Department();
+        Position position = new Position();
+
         User user = userDTO.toEntity();
+        department.setName(userDTO.getDepartment_name());
+        user.setDepartment(department);
+
+        position.setName(userDTO.getPosition_name());
+        user.setPosition(position);
+
         user.setPassword(passwordEncoder.encode(user.getPassword())); // 비밀번호 인코딩
         return userRepository.save(user);
     }
