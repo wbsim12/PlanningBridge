@@ -1,15 +1,19 @@
 package com.kr.kopoctc.planningBridge.schedule.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.kr.kopoctc.planningBridge.admin.domain.User;
+import com.kr.kopoctc.planningBridge.common.Priority;
+import com.kr.kopoctc.planningBridge.common.RepeatStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import org.w3c.dom.Text;
 
-import java.sql.Timestamp;
+
+
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 @Getter
 @Setter
@@ -17,13 +21,13 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String schedule_pk;
+    private String schedulePk;
 
-    @Column
-    private LocalDateTime start_date;
+    @Column(nullable = false)
+    private LocalDateTime startDate;
 
-    @Column
-    private LocalDateTime end_date;
+    @Column(nullable = false)
+    private LocalDateTime endDate;
 
     @Column
     private String title;
@@ -31,15 +35,19 @@ public class Schedule {
     @Column
     private String detail;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Priority priority;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RepeatStatus repeatStatus;
+
     @Column
-    private String priority;
+    private boolean type;
 
-//    @Column
-//    enum repeat_status;
-
-    @Column
-    boolean type;
-
-//    @Column
-//    String user_pk;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn
+    @JsonBackReference
+    private User user;
 }
