@@ -1,6 +1,6 @@
-package com.kr.kopoctc.planningBridge.admin.domain;
+package com.kr.kopoctc.planningBridge.admin.entity;
 
-import com.kr.kopoctc.planningBridge.admin.enums.UserType;
+import com.kr.kopoctc.planningBridge.common.UserType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class UserHistory {
 
     @Id
