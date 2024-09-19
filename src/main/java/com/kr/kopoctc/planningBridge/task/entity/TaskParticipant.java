@@ -1,4 +1,4 @@
-package com.kr.kopoctc.planningBridge.task.domain;
+package com.kr.kopoctc.planningBridge.task.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -11,17 +11,20 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-public class TaskAssignment {
+public class TaskParticipant {
     @Id
-    private String taskAssignmentPK;
+    private String taskParticipantPK;
 
-    /*  @ManyToOne(optional = false, fetch = FetchType.LAZY)
+     /*  @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "projectTeamPK")
     @JsonBackReference
-    private ProjectTeam projectTeam;*/
+    private ProjectTeamDTO projectTeam;*/
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_PK")
+    @JoinColumn(name = "taskpk")
     @JsonBackReference
     private Task task;
+
+    private boolean type;
+
 }

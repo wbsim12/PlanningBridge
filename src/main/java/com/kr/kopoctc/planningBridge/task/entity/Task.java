@@ -1,11 +1,10 @@
-package com.kr.kopoctc.planningBridge.task.domain;
+package com.kr.kopoctc.planningBridge.task.entity;
 
 import com.kr.kopoctc.planningBridge.common.Priority;
 import com.kr.kopoctc.planningBridge.common.TaskStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +17,8 @@ import java.util.List;
 public class Task {
 
     @Id
-    @Column(name = task_PK)
+    @Column(name = "taskpk")
     private String taskPK;
-
     private String name;
     private String startDate;
     private String endDate;
@@ -38,9 +36,22 @@ public class Task {
 
     // 셀프조인
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_PK")
+    @JoinColumn(name = "taskpk")
     private Task parentTask;
 
     @OneToMany (mappedBy = "parentTask", cascade = CascadeType.ALL)
     private List<Task> subTaskList = new ArrayList<>();
+
+/*    public Task(String taskPK, String name, String startDate, String endDate, String desc, Priority priority, TaskStatus status, String createdDate, String updatedDate) {
+        this.taskPK = taskPK;
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.desc = desc;
+        this.priority = priority;
+        this.status = status;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }*/
+
 }
