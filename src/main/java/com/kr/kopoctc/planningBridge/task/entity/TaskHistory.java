@@ -20,7 +20,7 @@ public class TaskHistory {
     private String changedDetail;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "taskpk")
+    @JoinColumn(name = "task_pk")
     @JsonBackReference
     private Task task;
 }

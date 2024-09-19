@@ -1,7 +1,9 @@
 package com.kr.kopoctc.planningBridge.task.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kr.kopoctc.planningBridge.common.Priority;
 import com.kr.kopoctc.planningBridge.common.TaskStatus;
+import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,7 +19,7 @@ import java.util.List;
 public class Task {
 
     @Id
-    @Column(name = "taskpk")
+    @Column(name = "task_pk")
     private String taskPK;
     private String name;
     private String startDate;
@@ -29,14 +31,14 @@ public class Task {
     private String updatedDate;
 
     // 프로젝트 객체 생성시 주석풀기
-    /*@ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "projectPK")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_pk")
     @JsonBackReference
-    private Project project;*/
+    private ProjectEntity project;
 
     // 셀프조인
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "taskpk")
+    @JoinColumn(name = "task_pk")
     private Task parentTask;
 
     @OneToMany (mappedBy = "parentTask", cascade = CascadeType.ALL)
