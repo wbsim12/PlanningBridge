@@ -20,4 +20,5 @@ public class ProjectDTO {
     private String guestRequestPk;
     private List<String> projectHistoryEntityList;
     private List<String> ProjectTeamEntityList;
+
 }

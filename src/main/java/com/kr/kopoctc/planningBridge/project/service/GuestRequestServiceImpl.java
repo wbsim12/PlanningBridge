@@ -9,4 +9,5 @@ public class GuestRequestServiceImpl implements GuestRequestService{
 
     @Autowired
     private GuestRequestRepository guestRequestRepository;
+
 }

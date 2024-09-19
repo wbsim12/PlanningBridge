@@ -16,4 +16,5 @@ public class ProjectTeamDTO {
     private LocalDateTime updatedDate;
     private String projectPk;
     private List<String> projectHistoryEntityList;
+
 }
