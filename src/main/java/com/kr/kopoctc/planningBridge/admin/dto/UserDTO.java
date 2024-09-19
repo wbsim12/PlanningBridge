@@ -1,6 +1,6 @@
 package com.kr.kopoctc.planningBridge.admin.dto;
 
-import com.kr.kopoctc.planningBridge.admin.domain.User;
+import com.kr.kopoctc.planningBridge.admin.entity.User;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -41,9 +41,9 @@ public class UserDTO {
 
     private boolean checkGuest = false;
 
-    private String departmentPK;
+    private String department_name;
 
-    private String positionPK;
+    private String position_name;
 
     private LocalDate createdDate;
 
@@ -63,8 +63,6 @@ public class UserDTO {
                 .isActive(this.isActive)
                 .phoneNumber(this.phoneNumber)
                 .lastChanagedPassword(LocalDateTime.now())
-                .departmentPK(this.departmentPK)
-                .positionPK(this.positionPK)
                 .build();
 
         // account, email, checkAdmin, name, checkGuest, phoneNumber, departmentPK, positionPK
