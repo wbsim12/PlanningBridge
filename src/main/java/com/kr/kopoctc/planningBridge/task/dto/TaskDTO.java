@@ -24,7 +24,7 @@ public class TaskDTO {
             .name(this.name)
             .startDate(this.startDate)
             .endDate(this.endDate)
-            .desc(this.desc)
+            .description(this.desc)
             .priority(this.priority)
             .status(this.status)
             .createdDate(this.createdDate)
