@@ -1,7 +1,8 @@
-package com.kr.kopoctc.planningBridge.task.domain;
+package com.kr.kopoctc.planningBridge.task.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kr.kopoctc.planningBridge.common.ConfirmStatus;
+import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,14 +21,14 @@ public class ConfirmResult {
     private String date;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "ConfirmRequestPK")
+    @JoinColumn(name = "confirm_requestpk")
     @JsonBackReference
     private ConfirmRequest confirmRequest;
 
-  /*  @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "projectTeamPK")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_pk")
     @JsonBackReference
-    private ProjectTeam projectTeam;*/
+    private ProjectEntity project;
 
 
 }

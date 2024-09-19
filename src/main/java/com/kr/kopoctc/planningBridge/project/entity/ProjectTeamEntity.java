@@ -1,8 +1,11 @@
 package com.kr.kopoctc.planningBridge.project.entity;
 
+import com.kr.kopoctc.planningBridge.common.ProjectTeamResponsibility;
 import com.kr.kopoctc.planningBridge.project.dto.ProjectTeamDTO;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -13,18 +16,18 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "project_team")
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectTeamEntity {
     @Id
+    @Column(name = "project_team_pk")
     private String projectTeamPK;
+    @Column(name = "user_pk")
     private String userPK;
-    private enum Responsibility {
-        PM,
-        PL,
-        PA
-    }
-    private Responsibility responsibility;
-
+    private ProjectTeamResponsibility responsibility;
+    @Column(name = "create_date")
     private LocalDateTime createdDate;
+    @Column(name = "update_date")
     private LocalDateTime updatedDate;
 
     @ManyToOne
@@ -34,12 +37,6 @@ public class ProjectTeamEntity {
     @OneToMany(mappedBy = "projectTeamEntity", cascade = CascadeType.ALL)
     private List<ProjectHistoryEntity> projectHistoryEntityList = new ArrayList<>();
 
-/*    public ProjectTeamDTO toProjectTeamDTO() {
-        ProjectTeamDTO projectTeamDTO = new ProjectTeamDTO();
-        projectTeamDTO.setProjectTeamPK(this.projectTeamPK);
-        projectTeamDTO.setResponsibility(this.responsibility.name());
-        projectTeamDTO.setCreatedDate(this.createdDate);
-        projectTeamDTO.setUpdatedDate(this.updatedDate);
-        return projectTeamDTO;
-    }*/
+
+
 }

@@ -15,4 +15,5 @@ public class ProjectHistoryDTO {
     private LocalDateTime updatedDate;
     private String projectPk;
     private String projectTeamPk;
+
 }

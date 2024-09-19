@@ -1,4 +1,4 @@
-package com.kr.kopoctc.planningBridge.admin.domain;
+package com.kr.kopoctc.planningBridge.admin.entity;
 
 import lombok.*;
 
@@ -49,15 +49,18 @@ public class User {
     @Column
     private boolean checkGuest = false;
 
-    @Column
-    private String departmentPK;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="department_pk")
+    private Department department;
 
-    @Column
-    private String positionPK;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="position_pk")
+    private Position position;
 
     @Column
     private LocalDateTime createdDate;
 
     @Column
     private LocalDateTime updatedDate;
+
 }

@@ -1,8 +1,7 @@
 package com.kr.kopoctc.planningBridge.admin.repository;
 
-import com.kr.kopoctc.planningBridge.admin.domain.User;
+import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.kr.kopoctc.planningBridge.admin.dto.UserDTO;
-import com.kr.kopoctc.planningBridge.admin.service.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +36,6 @@ class UserRepositoryTest {
         userDTO.setName("테스트");
         userDTO.setPhoneNumber("010-4315-1158");
         userDTO.setEmail("kopo06@gmail.com");
-        userDTO.setDepartmentPK("DEPT001");
-        userDTO.setPositionPK("POS001");
         userDTO.setLastChanagedPassword(LocalDate.now());
         userDTO.setPasswordExpired(false);
         userDTO.setCheckAdmin(false);
