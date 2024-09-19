@@ -14,6 +14,7 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long guestPK;
 
+
     @Column
     private String company;
 
