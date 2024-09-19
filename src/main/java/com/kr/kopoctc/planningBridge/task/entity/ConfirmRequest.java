@@ -18,7 +18,7 @@ public class ConfirmRequest {
     private String date;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "taskpk")
+    @JoinColumn(name = "task_pk")
     @JsonBackReference
     private Task task;
 
