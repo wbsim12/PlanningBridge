@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.kr.kopoctc.planningBridge.admin.dto.UserDTO;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
+@RequestMapping("/admin")
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;
