@@ -1,5 +1,5 @@
-package com.kr.kopoctc.planningBridge.schedule.repository;
-
-public class ScheduleRepositoryImpl implements ScheduleRepository {
-
-}
+//package com.kr.kopoctc.planningBridge.schedule.repository;
+//
+//public class ScheduleRepositoryImpl implements ScheduleRepository {
+//
+//}
