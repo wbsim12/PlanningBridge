@@ -28,8 +28,8 @@ public class ProjectEntity {
     @Column(name = "end_date")
     private LocalDateTime endDate;
     private String priority;
-    @Column(name = "project_desc")
-    private String projectDesc;
+    private String description;
+    @Enumerated(EnumType.ORDINAL)
     private ProjectStatus status;
     @Column(name = "create_date")
     private LocalDateTime createdDate;
