@@ -21,6 +21,7 @@ public class Task {
     @Id
     @Column(name = "task_pk")
     private String taskPK;
+
     private String name;
     private String startDate;
     private String endDate;
@@ -38,7 +39,7 @@ public class Task {
 
     // 셀프조인
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_pk")
+    @JoinColumn(name = "task_pk", insertable = false, updatable = false)
     private Task parentTask;
 
     @OneToMany (mappedBy = "parentTask", cascade = CascadeType.ALL)
