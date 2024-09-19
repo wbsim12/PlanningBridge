@@ -17,9 +17,9 @@ import java.time.LocalDateTime;
 @Setter
 public class ScheduleDTO {
 
-    private String schedule_pk;
-    private LocalDateTime start_date;
-    private LocalDateTime end_date;
+    private String schedulePk;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private String title;
     private String detail;
     private Priority priority;
@@ -28,6 +28,6 @@ public class ScheduleDTO {
     private User user;
 
     public Schedule toEntity() {
-        return new Schedule(schedule_pk, start_date, end_date, title, detail, priority, repeatStatus, type, user);
+        return new Schedule(schedulePk, startDate, endDate, title, detail, priority, repeatStatus, type, user);
     }
 }
