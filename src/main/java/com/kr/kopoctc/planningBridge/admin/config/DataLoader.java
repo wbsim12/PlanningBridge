@@ -34,9 +34,9 @@ public class DataLoader {
             userDTO.setName("김선우");
             userDTO.setPhoneNumber("010-4315-1158");
             userDTO.setEmail("kopo06@gmail.com");
-            userDTO.setDepartmentPK("DEPT001");
-            userDTO.setPositionPK("POS001");
             userDTO.setLastChanagedPassword(LocalDate.now());
+            userDTO.setDepartment_name("DEPT001");
+            userDTO.setPosition_name("PO001");
             userDTO.setPasswordExpired(false);
             userDTO.setCheckAdmin(false);
             userDTO.setCheckGuest(false);
@@ -53,9 +53,9 @@ public class DataLoader {
             userDTO.setName("관리자");
             userDTO.setPhoneNumber("010-1234-5678");
             userDTO.setEmail("admin@gmail.com");
-            userDTO.setDepartmentPK("DEPT002");
-            userDTO.setPositionPK("POS002");
             userDTO.setLastChanagedPassword(LocalDate.now());
+            userDTO.setDepartment_name("DEPT001");
+            userDTO.setPosition_name("PO001");
             userDTO.setPasswordExpired(false);
             userDTO.setCheckAdmin(true);
             userDTO.setCheckGuest(false);
