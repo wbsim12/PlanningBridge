@@ -1,7 +1,7 @@
 package com.kr.kopoctc.planningBridge.schedule.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.kr.kopoctc.planningBridge.admin.domain.User;
+import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.kr.kopoctc.planningBridge.common.Priority;
 import com.kr.kopoctc.planningBridge.common.RepeatStatus;
 import jakarta.persistence.*;
