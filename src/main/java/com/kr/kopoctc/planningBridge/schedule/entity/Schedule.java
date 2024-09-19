@@ -21,13 +21,13 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String schedule_pk;
+    private String schedulePk;
 
     @Column(nullable = false)
-    private LocalDateTime start_date;
+    private LocalDateTime startDate;
 
     @Column(nullable = false)
-    private LocalDateTime end_date;
+    private LocalDateTime endDate;
 
     @Column
     private String title;
