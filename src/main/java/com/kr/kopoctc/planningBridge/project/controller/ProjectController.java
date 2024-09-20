@@ -19,7 +19,7 @@ public class ProjectController {
     // 프로젝트 전체 조회
     @GetMapping("/")
     public String finadProjectList(Model model) {
-        model.addAttribute("projects", projectService.findAllProjects());
+      //  model.addAttribute("projects", projectService.findAllProjects());
         return "project/projectList";
     }
 

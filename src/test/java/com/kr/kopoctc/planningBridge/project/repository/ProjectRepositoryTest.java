@@ -35,7 +35,7 @@ public class ProjectRepositoryTest {
         project1.setStartDate(LocalDateTime.now());
         project1.setEndDate(LocalDateTime.now().plusMonths(1));
         project1.setPriority("High");
-        project1.setProjectDesc("Description for Test Project 1");
+        project1.setDescription("Description for Test Project 1");
 
         projectRepository.save(project1); // 저장
     }
