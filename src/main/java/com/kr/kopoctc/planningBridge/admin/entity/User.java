@@ -3,9 +3,11 @@ package com.kr.kopoctc.planningBridge.admin.entity;
 import lombok.*;
 
 import jakarta.persistence.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Entity
 @Builder
 @Table(name = "users")
@@ -17,9 +19,9 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long userPK;
+    private Long id;
 
-    @Column // 계정명
+    @Column
     private String account;
 
     @Column
@@ -50,11 +52,11 @@ public class User {
     private boolean checkGuest = false;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="department_pk")
+    @JoinColumn(name = "department_pk")
     private Department department;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="position_pk")
+    @JoinColumn(name = "position_pk")
     private Position position;
 
     @Column
@@ -64,3 +66,6 @@ public class User {
     private LocalDateTime updatedDate;
 
 }
+
+
+

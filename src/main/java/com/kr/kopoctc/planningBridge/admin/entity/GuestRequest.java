@@ -1,6 +1,6 @@
-package com.kr.kopoctc.planningBridge.project.entity;
+package com.kr.kopoctc.planningBridge.admin.entity;
 
-import com.kr.kopoctc.planningBridge.project.dto.GuestRequestDTO;
+import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "guest_request")
 @NoArgsConstructor
 @AllArgsConstructor
-public class GuestRequestEntity {
+public class GuestRequest {
     @Id
     @Column(name = "guest_requestPk")
     private String guestRequestPk;

@@ -1,7 +1,7 @@
 package com.kr.kopoctc.planningBridge.project.entity;
 
+import com.kr.kopoctc.planningBridge.admin.entity.GuestRequest;
 import com.kr.kopoctc.planningBridge.common.ProjectStatus;
-import com.kr.kopoctc.planningBridge.project.dto.ProjectDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,7 +38,7 @@ public class ProjectEntity {
 
     @ManyToOne
     @JoinColumn(name = "guest_request_pk")
-    private GuestRequestEntity guestRequestEntity;
+    private GuestRequest guestRequestEntity;
 
     @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL)
     private List<ProjectHistoryEntity> projectHistoryEntityList = new ArrayList<>();

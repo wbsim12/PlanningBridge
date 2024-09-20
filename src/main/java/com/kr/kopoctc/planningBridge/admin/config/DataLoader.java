@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Configuration
 //@Profile("!test")
@@ -34,14 +35,14 @@ public class DataLoader {
             userDTO.setName("김선우");
             userDTO.setPhoneNumber("010-4315-1158");
             userDTO.setEmail("kopo06@gmail.com");
-            userDTO.setLastChanagedPassword(LocalDate.now());
-            userDTO.setDepartment_name("DEPT001");
-            userDTO.setPosition_name("PO001");
+            userDTO.setLastChanagedPassword(LocalDateTime.now());
+            userDTO.setDepartmentPK("DEPT001");
+            userDTO.setPositionPK("PO001");
             userDTO.setPasswordExpired(false);
             userDTO.setCheckAdmin(false);
             userDTO.setCheckGuest(false);
-            userDTO.setCreatedDate(LocalDate.now());
-            userDTO.setUpdatedDate(LocalDate.now());
+            userDTO.setCreatedDate(LocalDateTime.now());
+            userDTO.setUpdatedDate(LocalDateTime.now());
 
             userServiceImpl.createUser(userDTO);
 
@@ -53,14 +54,14 @@ public class DataLoader {
             userDTO.setName("관리자");
             userDTO.setPhoneNumber("010-1234-5678");
             userDTO.setEmail("admin@gmail.com");
-            userDTO.setLastChanagedPassword(LocalDate.now());
-            userDTO.setDepartment_name("DEPT001");
-            userDTO.setPosition_name("PO001");
+            userDTO.setLastChanagedPassword(LocalDateTime.now());
+            userDTO.setDepartmentPK("DEPT001");
+            userDTO.setPositionPK("PO001");
             userDTO.setPasswordExpired(false);
             userDTO.setCheckAdmin(true);
             userDTO.setCheckGuest(false);
-            userDTO.setCreatedDate(LocalDate.now());
-            userDTO.setUpdatedDate(LocalDate.now());
+            userDTO.setCreatedDate(LocalDateTime.now());
+            userDTO.setUpdatedDate(LocalDateTime.now());
 
             userServiceImpl.createUser(userDTO);
 
