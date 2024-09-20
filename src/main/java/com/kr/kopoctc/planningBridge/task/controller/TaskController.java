@@ -22,8 +22,8 @@ public class TaskController {
     @GetMapping(value = {"", "/"})
     public String showTaskList(Model model) {
         // 로그인 확인
-        // 프로젝트 번호 확인
-        // 해당 프로젝트 조회
+        // 유저 별 프로젝트 번호 조회하기
+        // 프로젝트 번호 별 Task 조회
         return "task/taskList";
     }
 
@@ -56,4 +56,6 @@ public class TaskController {
         // 해당 프로젝트 조회
         return "task/taskEditForm";
     }
+
+
 }
