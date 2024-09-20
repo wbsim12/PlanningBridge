@@ -14,12 +14,12 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long guestPK;
 
-
     @Column
     private String company;
 
-    @Column
-    private String userPK;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_item_id")
+    private User user;
 
     @Column
     private LocalDateTime createdDate;

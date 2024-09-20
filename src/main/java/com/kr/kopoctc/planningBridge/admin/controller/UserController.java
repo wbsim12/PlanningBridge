@@ -51,6 +51,9 @@ public class UserController {
             return "admin/registerUser";
         }
 
+        log.info(userDTO.getDepartmentPK());
+        log.info(userDTO.getPositionPK());
+
         if (userServiceImpl.getUserByAccount(userDTO.getAccount()) == null) {
             userServiceImpl.createUser(userDTO);
             return "admin/registerSuccess";

@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -33,7 +32,7 @@ public class UserDTO {
 
     private boolean isActive = false;
 
-    private LocalDate lastChanagedPassword;
+    private LocalDateTime lastChanagedPassword;
 
     private boolean passwordExpired = false;
 
@@ -41,25 +40,27 @@ public class UserDTO {
 
     private boolean checkGuest = false;
 
-    private String department_name;
+    private String departmentPK;
 
-    private String position_name;
+    private String positionPK;
 
-    private LocalDate createdDate;
+    private String company;
 
-    private LocalDate updatedDate;
+    private LocalDateTime createdDate;
+
+    private LocalDateTime updatedDate;
 
     public User toEntity() {
         return User.builder()
                 .account(this.account)
                 .password(this.password)
                 .email(this.email)
-                .checkAdmin(this.checkAdmin)
                 .createdDate(LocalDateTime.now())
                 .updatedDate(LocalDateTime.now())
                 .name(this.name)
                 .passwordExpired(this.passwordExpired)
                 .checkGuest(this.checkGuest)
+                .checkAdmin(this.checkAdmin)
                 .isActive(this.isActive)
                 .phoneNumber(this.phoneNumber)
                 .lastChanagedPassword(LocalDateTime.now())

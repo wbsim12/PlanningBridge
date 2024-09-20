@@ -60,11 +60,15 @@
         </div>
         <div class="form-group">
             <label for="checkAdmin">Admin:</label>
-            <input type="checkbox" id="checkAdmin" name="checkAdmin">
+            <input type="checkbox" id="checkAdmin" name="checkAdmin" onchange="toggleGuestOption()">
         </div>
         <div class="form-group">
             <label for="checkGuest">Guest:</label>
-            <input type="checkbox" id="checkGuest" name="checkGuest">
+            <input type="checkbox" id="checkGuest" name="checkGuest" onchange="toggleGuestOption()">
+        </div>
+        <div class="form-group" id="companyField" style="display: none;">
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" disabled>
         </div>
         <div class="form-group">
             <label for="departmentPK">Department:</label>
@@ -93,5 +97,44 @@
         </div>
     </form>
 </div>
+<script>
+    function toggleGuestOption() {
+        const adminCheckbox = document.getElementById('checkAdmin');
+        const guestCheckbox = document.getElementById('checkGuest');
+        const companyField = document.getElementById('companyField');
+        const companyInput = document.getElementById('company');
+        const departmentSelect = document.getElementById('departmentPK');
+        const positionSelect = document.getElementById('positionPK');
+
+        // Admin 체크 시
+        if (adminCheckbox.checked) {
+            guestCheckbox.disabled = true;
+            guestCheckbox.checked = false;
+            companyField.style.display = 'none';
+            companyInput.disabled = true;
+            departmentSelect.disabled = false;
+            positionSelect.disabled = false;
+        } else {
+            guestCheckbox.disabled = false;
+        }
+
+        // Guest 체크 시
+        if (guestCheckbox.checked) {
+            adminCheckbox.disabled = true;
+            companyField.style.display = 'block';
+            companyInput.disabled = false;
+            departmentSelect.disabled = true;
+            positionSelect.disabled = true;
+            departmentSelect.value = "";
+            positionSelect.value = "";
+        } else {
+            adminCheckbox.disabled = false;
+            companyField.style.display = 'none';
+            companyInput.disabled = true;
+            departmentSelect.disabled = false;
+            positionSelect.disabled = false;
+        }
+    }
+</script>
 </body>
 </html>
