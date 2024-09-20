@@ -1,7 +1,7 @@
 package com.kr.kopoctc.planningBridge.project.service;
 
 import com.kr.kopoctc.planningBridge.project.dto.ProjectDTO;
-import com.kr.kopoctc.planningBridge.project.entity.GuestRequestEntity;
+import com.kr.kopoctc.planningBridge.admin.entity.GuestRequest;
 import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import com.kr.kopoctc.planningBridge.project.repository.GuestRequestRepository;
 import com.kr.kopoctc.planningBridge.project.repository.ProjectRepository;

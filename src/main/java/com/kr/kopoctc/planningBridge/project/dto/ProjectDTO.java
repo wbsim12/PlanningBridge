@@ -1,6 +1,6 @@
 package com.kr.kopoctc.planningBridge.project.dto;
 import com.kr.kopoctc.planningBridge.common.ProjectStatus;
-import com.kr.kopoctc.planningBridge.project.entity.GuestRequestEntity;
+import com.kr.kopoctc.planningBridge.admin.entity.GuestRequest;
 import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +26,7 @@ public class ProjectDTO {
     private List<String> ProjectTeamEntityList;
 
    // DTO -> Entity
-    public ProjectEntity toEntity(GuestRequestEntity guestRequestEntity) {
+    public ProjectEntity toEntity(GuestRequest guestRequestEntity) {
         ProjectEntity projectEntity = new ProjectEntity();
         projectEntity.setProjectPK(this.projectPK);
         projectEntity.setName(this.name);
