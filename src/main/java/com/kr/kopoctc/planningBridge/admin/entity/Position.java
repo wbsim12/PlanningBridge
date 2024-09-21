@@ -17,6 +17,6 @@ public class Position {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "position")
-    private List<User> user;
+    @Column
+    private boolean IsDeleted;
 }

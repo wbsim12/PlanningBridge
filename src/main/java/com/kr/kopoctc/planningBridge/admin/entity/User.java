@@ -16,10 +16,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Long userPK;
 
     @Column
     private String account;
@@ -51,12 +50,12 @@ public class User {
     @Column
     private boolean checkGuest = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "department_pk")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_pk", nullable = true)
     private Department department;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "position_pk")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "position_pk", nullable = true)
     private Position position;
 
     @Column
@@ -64,6 +63,9 @@ public class User {
 
     @Column
     private LocalDateTime updatedDate;
+
+    @Column
+    private boolean isDeleted;
 
 }
 

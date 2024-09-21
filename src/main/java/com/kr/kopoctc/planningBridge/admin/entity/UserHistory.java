@@ -31,7 +31,8 @@ public class UserHistory {
     @Column
     private String changeDetail;
 
-    @Column
-    private String userPK;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_pk", nullable = true)
+    private User userPK;
 
 }
