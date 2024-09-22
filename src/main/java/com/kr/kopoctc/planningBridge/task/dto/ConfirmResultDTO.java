@@ -4,10 +4,12 @@ import com.kr.kopoctc.planningBridge.common.ConfirmStatus;
 import com.kr.kopoctc.planningBridge.task.entity.ConfirmRequest;
 import com.kr.kopoctc.planningBridge.task.entity.ConfirmResult;
 
+import java.time.LocalDateTime;
+
 public class ConfirmResultDTO {
 
     private ConfirmStatus status;
-    private String date;
+    private LocalDateTime date;
 
 
     public ConfirmResult toEntity = ConfirmResult.builder()
