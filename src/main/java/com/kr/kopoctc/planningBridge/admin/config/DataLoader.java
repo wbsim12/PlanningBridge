@@ -36,8 +36,8 @@ public class DataLoader {
             userDTO.setPhoneNumber("010-4315-1158");
             userDTO.setEmail("kopo06@gmail.com");
             userDTO.setLastChanagedPassword(LocalDateTime.now());
-            userDTO.setDepartmentPK("DEPT001");
-            userDTO.setPositionPK("PO001");
+            userDTO.setDepartmentPK(1);
+            userDTO.setPositionPK(1);
             userDTO.setPasswordExpired(false);
             userDTO.setCheckAdmin(false);
             userDTO.setCheckGuest(false);
@@ -55,8 +55,8 @@ public class DataLoader {
             userDTO.setPhoneNumber("010-1234-5678");
             userDTO.setEmail("admin@gmail.com");
             userDTO.setLastChanagedPassword(LocalDateTime.now());
-            userDTO.setDepartmentPK("DEPT001");
-            userDTO.setPositionPK("PO001");
+            userDTO.setDepartmentPK(1);
+            userDTO.setPositionPK(1);
             userDTO.setPasswordExpired(false);
             userDTO.setCheckAdmin(true);
             userDTO.setCheckGuest(false);
