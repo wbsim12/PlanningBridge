@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/task")
 @Slf4j
 public class TaskController {
-    @Autowired
-    private TaskRepository taskRepository;
+    //@Autowired private TaskRepository taskRepository;
 
     @GetMapping(value = {"", "/"})
     public String showTaskList(Model model) {

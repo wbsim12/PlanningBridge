@@ -28,8 +28,9 @@ public class TaskServiceImpl implements TaskService {
     // 프로젝트 번호 별 Task 조회
     @Override
     public List<Task> getTaskByProject(String projectPK) {
-        List<Task> taskList = taskRepository.findByProjectId(projectPK);
-        return taskList;
+        //List<Task> taskList = taskRepository.findByProjectPK(projectPK);
+        //return taskList;
+        return List.of();
     }
 
     @Override
