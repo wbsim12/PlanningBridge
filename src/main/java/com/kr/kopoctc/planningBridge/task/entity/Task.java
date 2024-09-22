@@ -7,6 +7,7 @@ import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +24,13 @@ public class Task {
     private String taskPK;
 
     private String name;
-    private String startDate;
-    private String endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private String description;
     private Priority priority;
     private TaskStatus status;
-    private String createdDate;
-    private String updatedDate;
+    private LocalDateTime createdDate;
+    private boolean is_deleted;
 
     // 프로젝트 객체 생성시 주석풀기
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

@@ -6,6 +6,8 @@ import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +20,7 @@ public class ConfirmResult {
     private String ConfirmResultPK;
 
     private ConfirmStatus status;
-    private String date;
+    private LocalDateTime date;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "confirm_requestpk")
