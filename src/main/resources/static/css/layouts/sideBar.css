@@ -33,3 +33,11 @@
 .menu-icon {
     margin-right: 10px;
 }
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+.menu-item.active .submenu {
+    display: block;
+}
