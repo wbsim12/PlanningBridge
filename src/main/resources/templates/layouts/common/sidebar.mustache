@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <title>Sidebar</title>
     <link href="/css/layouts/sideBar.css" rel="stylesheet">
-
     <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
         function toggleSubMenu(event) {
             event.preventDefault();
             const menuItem = event.currentTarget.parentElement;
@@ -16,61 +20,73 @@
 <body>
 <div class="sidebar">
     <div class="sidebar-header">
-        <h2>메인 메뉴</h2>
+        <h2 class="menu-text">메인 메뉴</h2>
+        <div class="hamburger-menu" onclick="toggleSidebar()">
+            <img src="/images/icons/free-icon-sidebar-10758674.png" alt="Menu Small Icon" class="menu-icon"></div>
     </div>
     <ul class="sidebar-menu">
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <span class="menu-icon">📊</span> 대시보드
+                <img src="/images/icons/chart-histogram.png" alt="Dashboard Icon" class="menu-icon">
+                <span class="menu-text">대시보드</span>
             </a>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link" onclick="toggleSubMenu(event)">
-                <span class="menu-icon">📂</span> 프로젝트 관리
+                <img src="/images/icons/workflow-setting-alt.png" alt="Projects Icon" class="menu-icon">
+                <span class="menu-text">프로젝트 관리</span>
             </a>
             <ul class="submenu">
                 <li class="submenu-item">
                     <a href="#" class="menu-link">
-                        <span class="menu-icon">🔍</span> 프로젝트 조회
+                        <img src="/images/icons/search.png" alt="View Projects Icon" class="menu-icon">
+                        <span class="menu-text">프로젝트 조회</span>
                     </a>
                 </li>
             </ul>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link" onclick="toggleSubMenu(event)">
-                <span class="menu-icon">🛠️</span> 작업 관리
+                <img src="/images/icons/web-test.png" alt="Tasks Icon" class="menu-icon">
+                <span class="menu-text">작업 관리</span>
             </a>
             <ul class="submenu">
                 <li class="submenu-item">
                     <a href="#" class="menu-link">
-                        <span class="menu-icon">📝</span> 작업 등록
+                        <img src="/images/icons/edit.png" alt="Add Task Icon" class="menu-icon">
+                        <span class="menu-text">작업 등록</span>
                     </a>
                 </li>
                 <li class="submenu-item">
                     <a href="#" class="menu-link">
-                        <span class="menu-icon">📋</span> 작업 관리
+                        <img src="/images/icons/priority-importance.png" alt="Manage Task Icon" class="menu-icon">
+                        <span class="menu-text">작업 관리</span>
                     </a>
                 </li>
                 <li class="submenu-item">
                     <a href="#" class="menu-link">
-                        <span class="menu-icon">📊</span> 간트 차트
+                        <img src="/images/icons/chart-gantt.png" alt="Gantt Chart Icon" class="menu-icon">
+                        <span class="menu-text">간트 차트</span>
                     </a>
                 </li>
             </ul>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <span class="menu-icon">📅</span> 일정 관리
+                <img src="/images/icons/calendar-clock.png" alt="Calendar Icon" class="menu-icon">
+                <span class="menu-text">일정 관리</span>
             </a>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <span class="menu-icon">⚙️</span> 설정
+                <img src="/images/icons/settings.png" alt="Settings Icon" class="menu-icon">
+                <span class="menu-text">설정</span>
             </a>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <span class="menu-icon">🔒</span> Log Out
+                <img src="/images/icons/exit.png" alt="Logout Icon" class="menu-icon">
+                <span class="menu-text">Log Out</span>
             </a>
         </li>
     </ul>

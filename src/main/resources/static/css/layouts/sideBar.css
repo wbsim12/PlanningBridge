@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 .sidebar {
     width: 250px;
     background-color: #2C3E50;
@@ -6,12 +11,26 @@
     position: fixed;
     top: 0;
     left: 0;
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    width: 60px;
 }
 
 .sidebar-header {
     padding: 20px;
     text-align: center;
     background-color: #1A252F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger-menu {
+    cursor: pointer;
+    font-size: 24px;
 }
 
 .sidebar-menu {
@@ -21,6 +40,8 @@
 
 .menu-item, .submenu-item {
     padding: 15px 20px;
+    display: flex;
+    align-items: center;
 }
 
 .menu-link {
@@ -28,16 +49,37 @@
     color: #ecf0f1;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .menu-icon {
     margin-right: 10px;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+}
+
+.menu-text {
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sidebar.collapsed .menu-text {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .submenu {
     display: none;
     padding-left: 20px;
+    flex-direction: column;
+    width: 100%;
 }
+
 .menu-item.active .submenu {
-    display: block;
+    display: flex;
+}
+
+.sidebar.collapsed .submenu {
+    display: none;
 }
