@@ -19,16 +19,32 @@ public class ProjectHistoryEntity {
     @Id
     @Column(name = "project_history_pk")
     private String projectHistoryPK;
+
     @Column(name = "change_date")
     private LocalDateTime changeDate;
+
     @Column(name = "change_detail")
     private String changeDetail;
+
     @Column(name = "job_pk")
     private String jobPK;
+
     @Column(name = "create_date")
     private LocalDateTime createdDate;
+
     @Column(name = "update_date")
     private LocalDateTime updatedDate;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdDate = LocalDateTime.now();
+        this.updatedDate = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedDate = LocalDateTime.now();
+    }
 
     @ManyToOne
     @JoinColumn(name = "project_pk")

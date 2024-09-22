@@ -5,7 +5,11 @@ import com.kr.kopoctc.planningBridge.admin.entity.Position;
 import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.kr.kopoctc.planningBridge.admin.entity.Guest;
 import com.kr.kopoctc.planningBridge.admin.dto.UserDTO;
+import com.kr.kopoctc.planningBridge.admin.repository.DepartmentRepository;
 import com.kr.kopoctc.planningBridge.admin.repository.GuestRepository;
+import com.kr.kopoctc.planningBridge.admin.repository.PositionRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,32 +17,29 @@ import com.kr.kopoctc.planningBridge.admin.repository.UserRepository;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
-    private GuestRepository guestRepository;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, GuestRepository guestRepository) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.guestRepository = guestRepository;
-    }
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final GuestRepository guestRepository;
+    private final PositionRepository positionRepository;
+    private final DepartmentRepository departmentRepository;
 
     @Override
     public void createUser(UserDTO userDTO) {
 
-        Department department = new Department();
-        Position position = new Position();
-
         User user = userDTO.toEntity();
-        department.setName(userDTO.getDepartmentPK());
-        user.setDepartment(department);
 
-        position.setName(userDTO.getPositionPK());
-        user.setPosition(position);
+        if (userDTO.getDepartmentPK() != null && userDTO.getPositionPK() != null) {
+            user.setDepartment(departmentRepository.findById(userDTO.getDepartmentPK()).orElse(null));
+
+            user.setPosition(positionRepository.findById(userDTO.getPositionPK()).orElse(null));
+        }
+
+        log.info("null이 말이야");
 
         user.setPassword(passwordEncoder.encode(user.getPassword())); // 비밀번호 인코딩
 

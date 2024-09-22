@@ -40,11 +40,13 @@ public class UserDTO {
 
     private boolean checkGuest = false;
 
-    private String departmentPK;
-
-    private String positionPK;
-
     private String company;
+
+    private Integer departmentPK;
+
+    private Integer positionPK;
+
+    private boolean isDeleted = false;
 
     private LocalDateTime createdDate;
 

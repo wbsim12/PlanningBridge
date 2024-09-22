@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,12 +37,12 @@ class UserRepositoryTest {
         userDTO.setName("테스트");
         userDTO.setPhoneNumber("010-4315-1158");
         userDTO.setEmail("kopo06@gmail.com");
-        userDTO.setLastChanagedPassword(LocalDate.now());
+        userDTO.setLastChanagedPassword(LocalDateTime.now());
         userDTO.setPasswordExpired(false);
         userDTO.setCheckAdmin(false);
         userDTO.setCheckGuest(false);
-        userDTO.setCreatedDate(LocalDate.now());
-        userDTO.setUpdatedDate(LocalDate.now());
+        userDTO.setCreatedDate(LocalDateTime.now());
+        userDTO.setUpdatedDate(LocalDateTime.now());
 
         userRepository.save(userDTO.toEntity());
     }

@@ -18,7 +18,7 @@ public class Guest {
     private String company;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_item_id")
+    @JoinColumn(name = "user_pk")
     private User user;
 
     @Column
