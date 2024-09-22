@@ -17,10 +17,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "user_seq", sequenceName = "users_id_seq", allocationSize = 1)
     private Long userPK;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String account;
 
     @Column
@@ -39,7 +40,7 @@ public class User {
     private boolean isActive = false;
 
     @Column
-    private LocalDateTime lastChanagedPassword;
+    private LocalDateTime lastChangedPassword;
 
     @Column
     private boolean passwordExpired = false;
