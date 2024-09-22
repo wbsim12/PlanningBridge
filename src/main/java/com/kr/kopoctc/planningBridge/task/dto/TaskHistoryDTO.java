@@ -2,9 +2,11 @@ package com.kr.kopoctc.planningBridge.task.dto;
 
 import com.kr.kopoctc.planningBridge.task.entity.TaskHistory;
 
+import java.time.LocalDateTime;
+
 public class TaskHistoryDTO {
 
-    private String changedDate;
+    private LocalDateTime changedDate;
     private String changedDetail;
 
     public TaskHistory toEntity = TaskHistory.builder()
