@@ -65,7 +65,7 @@ public class UserDTO {
                 .checkAdmin(this.checkAdmin)
                 .isActive(this.isActive)
                 .phoneNumber(this.phoneNumber)
-                .lastChanagedPassword(LocalDateTime.now())
+                .lastChangedPassword(LocalDateTime.now())
                 .build();
 
         // account, email, checkAdmin, name, checkGuest, phoneNumber, departmentPK, positionPK
