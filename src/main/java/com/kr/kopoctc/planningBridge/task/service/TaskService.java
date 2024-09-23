@@ -7,8 +7,8 @@ import com.kr.kopoctc.planningBridge.task.entity.Task;
 import java.util.List;
 
 public interface TaskService {
-    // 로그인 유저의 프로젝트 번호 조회하기
-    public String getProjectPKByUser();
+    // 로그인 유저의 프로젝트 번호 리스트 조회하기
+    public List<String> getProjectListPKByUser();
 
     // 프로젝트 번호 별 Task 조회
     public List<Task> getTaskByProject(String projectPK);
