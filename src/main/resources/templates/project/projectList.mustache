@@ -2,11 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project List</title>
 </head>
 <body>
-<h1> Project List </h1>
+<h1>Project List</h1>
 
+<button id="deleteButton" onclick="toggleCheckboxes()">Delete</button>
+
+<form id="deleteForm" method="POST" action="/project/deleteProjects">
+<table border="1">
+    <thead>
+    <tr>
+        <th id="selectHeader" style="display:none;">Select</th>
+        <th>Project ID</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#projects}}
+        <tr>
+            <td class="checkboxCell" style="display:none;"><input type="checkbox" name="selectedProjects" value="{{projectPK}}"></td>
+            <td>{{projectPK}}</td>
+            <td><a href="/project/findProject/{{projectPK}}">{{name}}</a></td>
+            <td>{{startDate}}</td>
+            <td>{{endDate}}</td>
+            <td>{{status}}</td>
+            <td><a href="/project/editProject/{{projectPK}}">수정</a></td>
+            </td>
+        </tr>
+    {{/projects}}
+    </tbody>
+</table>
+    <button type="submit" style="display:none" id="confirmDelete">Confirm Delete</button>
+</form>
+<a href="/project/newProject">새 프로젝트</a>
+
+<script>
+    let checkboxesVisible = false;
+
+    function toggleCheckboxes() {
+        const checkboxCells = document.querySelectorAll('.checkboxCell');  // 모든 체크박스가 들어있는 <td> 요소 선택
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const deleteButton = document.getElementById('deleteButton');
+        const confirmDeleteButton = document.getElementById('confirmDelete');
+        const selectHeader = document.getElementById('selectHeader');
+
+        // 체크박스 <td> 및 체크박스 자체를 보이거나 숨기기
+        checkboxCells.forEach(cell => {
+            cell.style.display = checkboxesVisible ? 'none' : 'table-cell';
+        });
+        checkboxes.forEach(checkbox => {
+            checkbox.style.display = checkboxesVisible ? 'none' : 'inline-block';
+        });
+        selectHeader.style.display = checkboxesVisible ? 'none' : 'table-cell';
+
+        // Delete 버튼을 숨기고 Confirm Delete 버튼을 보이기
+        deleteButton.style.display = checkboxesVisible ? 'inline-block' : 'none';
+        confirmDeleteButton.style.display = checkboxesVisible ? 'none' : 'inline-block';
+
+        // 상태 토글
+        checkboxesVisible = !checkboxesVisible;
+    }
+</script>
 </body>
 </html>

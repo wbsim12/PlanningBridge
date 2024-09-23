@@ -20,7 +20,8 @@ import java.util.List;
 public class ProjectTeamEntity {
     @Id
     @Column(name = "project_team_pk")
-    private String projectTeamPK;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long projectTeamPK;
 
     @Column(name = "user_pk")
     private String userPK;

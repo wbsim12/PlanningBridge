@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Project</title>
+</head>
+<body>
+<h1>New Project</h1>
+Project Name
+<form action = "/project/newProject" method="post">
+    name
+    <input type="text" name = "name">
+
+    Start
+    <input type="date" name = "startDate">
+
+    End
+    <input type="date" name = "endDate">
+
+    Priority
+    <select name = "priority" id = "priority" >
+        {{#priorities}}
+        <option value="{{name}}">{{name}}</option>
+        {{/priorities}}priorities}}
+    </select>
+
+    Team
+    <select name = "teamOfPL" id = "teamOfPL" >
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+
+    Project Leader
+    <select name = "pl" id = "pl">
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+
+    Team
+    <select name = "team" id = "team">
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+
+    Responsibilities
+    <select name = "responsibility" id = "responsibility">
+        {{#responsibilities}}
+            <option value="{{name}}">{{name}}</option>
+        {{/responsibilities}}priorities}}
+    </select>
+
+    Team Member
+    <select name = "teamMember" id = "teamMember">
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+
+    Description
+    <input type = "text" name = "description">
+
+    <button type = "submit"> 생성 </button>
+    <a  href = "/project/projects">취소</a>
+
+</form>
+</body>
+</html>
