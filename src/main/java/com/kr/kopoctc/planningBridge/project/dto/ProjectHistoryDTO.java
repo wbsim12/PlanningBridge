@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class ProjectHistoryDTO {
-    private String projectHistoryPK;
+    private Long projectHistoryPK;
     private LocalDateTime changeDate;
     private String changeDetail;
     private String jobPK;

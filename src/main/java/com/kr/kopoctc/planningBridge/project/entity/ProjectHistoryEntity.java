@@ -18,7 +18,8 @@ import java.time.LocalDateTime;
 public class ProjectHistoryEntity {
     @Id
     @Column(name = "project_history_pk")
-    private String projectHistoryPK;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long projectHistoryPK;
 
     @Column(name = "change_date")
     private LocalDateTime changeDate;
