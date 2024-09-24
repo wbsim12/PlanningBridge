@@ -2,7 +2,7 @@ package com.kr.kopoctc.planningBridge.task.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kr.kopoctc.planningBridge.common.ConfirmStatus;
-import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
+import com.kr.kopoctc.planningBridge.project.entity.Project;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +31,7 @@ public class ConfirmResult {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_pk")
     @JsonBackReference
-    private ProjectEntity project;
+    private Project project;
 
 
 }
