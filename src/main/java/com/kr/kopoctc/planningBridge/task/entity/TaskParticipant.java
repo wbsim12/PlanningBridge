@@ -14,7 +14,8 @@ import lombok.*;
 @Setter
 public class TaskParticipant {
     @Id
-    private String taskParticipantPK;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long taskParticipantPK;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_pk")

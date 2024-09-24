@@ -16,7 +16,8 @@ import java.time.LocalDateTime;
 @Setter
 public class TaskHistory {
     @Id
-    private String TaskHistoryPK;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long TaskHistoryPK;
 
     private LocalDateTime changedDate;
     private String changedDetail;
