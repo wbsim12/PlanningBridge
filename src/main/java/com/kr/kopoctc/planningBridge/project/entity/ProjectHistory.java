@@ -1,41 +1,39 @@
 package com.kr.kopoctc.planningBridge.project.entity;
 
-import com.kr.kopoctc.planningBridge.common.ProjectTeamResponsibility;
-import com.kr.kopoctc.planningBridge.project.dto.ProjectTeamDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "project_team")
+@Table(name = "project_history")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectTeamEntity {
+public class ProjectHistory {
     @Id
-    @Column(name = "project_team_pk")
+    @Column(name = "project_history_pk")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long projectTeamPK;
+    private Long projectHistoryPK;
 
-    @Column(name = "user_pk")
-    private String userPK;
+    @Column(name = "change_date")
+    private LocalDateTime changeDate;
 
-    private ProjectTeamResponsibility responsibility;
+    @Column(name = "change_detail")
+    private String changeDetail;
+
+    @Column(name = "job_pk")
+    private String jobPK;
 
     @Column(name = "create_date")
     private LocalDateTime createdDate;
 
     @Column(name = "update_date")
     private LocalDateTime updatedDate;
-
-    @Column(name = "is_deleted")
-    private boolean isDeleted;
 
     @PrePersist
     public void prePersist() {
@@ -50,10 +48,11 @@ public class ProjectTeamEntity {
 
     @ManyToOne
     @JoinColumn(name = "project_pk")
-    private ProjectEntity projectEntity;
+    private Project project;
 
-    @OneToMany(mappedBy = "projectTeamEntity", cascade = CascadeType.ALL)
-    private List<ProjectHistoryEntity> projectHistoryEntityList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "project_team_pk")
+    private ProjectTeam projectTeam;
 
 
 
