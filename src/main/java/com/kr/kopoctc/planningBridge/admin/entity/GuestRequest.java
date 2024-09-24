@@ -1,6 +1,7 @@
 package com.kr.kopoctc.planningBridge.admin.entity;
 
 import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +22,15 @@ public class GuestRequest {
     @Id
     @Column(name = "guest_requestPk")
     private String guestRequestPk;
-    @Column(name = "guest_pk")
-    private String guestPK;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "guest_pk", nullable = true)
+    private Guest guest;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_pk", nullable = true)
+    private Project project;
+
     @Column(name = "create_date")
     private LocalDateTime createdDate;
     @Column(name = "update_date")
