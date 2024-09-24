@@ -35,7 +35,7 @@ public class ProjectTeam {
     private LocalDateTime updatedDate;
 
     @Column(name = "is_deleted")
-    private boolean isDeleted;
+    private Boolean isDeleted;
 
     @PrePersist
     public void prePersist() {

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @Slf4j
@@ -62,10 +61,16 @@ public class ProjectController {
         return "";
     }
 
-    // 삭제
+    // 삭제 메서드
     @PostMapping("/deleteProjects")
     public String deleteProjects(@RequestParam(value = "selectedProjects", required = false) List<Long> selectedProjectIds) {
-        projectService.deleteProjectsByIds(selectedProjectIds);
+        if (selectedProjectIds != null && !selectedProjectIds.isEmpty()) {
+            // 서비스에서 해당 프로젝트 삭제 처리
+            projectService.deleteProjectsByIds(selectedProjectIds);
+            log.info("Deleted project IDs: {}", selectedProjectIds);
+        } else {
+            log.warn("No projects selected for deletion.");
+        }
         return "redirect:/project/projects";
     }
 

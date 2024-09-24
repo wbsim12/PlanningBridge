@@ -2,6 +2,7 @@ package com.kr.kopoctc.planningBridge.project.entity;
 
 import com.kr.kopoctc.planningBridge.admin.entity.GuestRequest;
 import com.kr.kopoctc.planningBridge.common.ProjectStatus;
+import com.kr.kopoctc.planningBridge.task.entity.Task;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -58,6 +59,9 @@ public class Project {
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectTeam> ProjectTeamList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<Task> tasks = new ArrayList<>();
 
 
 }

@@ -54,12 +54,10 @@ public class ProjectServiceImpl implements ProjectService{
         return projectRepository.save(project);
     }
 
-    // 수정진행중 ..
     @Override
     public void deleteProjectsByIds(List<Long> selectedProjectIds) {
         projectRepository.deleteAllById(selectedProjectIds);
+        log.info("Deleted projects: {}", selectedProjectIds);
     }
-
-
 
 }
