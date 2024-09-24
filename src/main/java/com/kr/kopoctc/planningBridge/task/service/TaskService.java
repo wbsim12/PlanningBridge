@@ -1,6 +1,5 @@
 package com.kr.kopoctc.planningBridge.task.service;
 
-import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import com.kr.kopoctc.planningBridge.task.dto.TaskDTO;
 import com.kr.kopoctc.planningBridge.task.entity.Task;
 

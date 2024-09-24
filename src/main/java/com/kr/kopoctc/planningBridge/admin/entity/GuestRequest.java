@@ -1,6 +1,6 @@
 package com.kr.kopoctc.planningBridge.admin.entity;
 
-import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
+import com.kr.kopoctc.planningBridge.project.entity.Project;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,8 +20,8 @@ import java.util.List;
 @AllArgsConstructor
 public class GuestRequest {
     @Id
-    @Column(name = "guest_requestPk")
-    private String guestRequestPk;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long guestRequestPk;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guest_pk", nullable = true)
@@ -36,8 +36,8 @@ public class GuestRequest {
     @Column(name = "update_date")
     private LocalDateTime updatedDate;
 
-    @OneToMany(mappedBy = "guestRequestEntity", cascade = CascadeType.ALL)
-    private List<ProjectEntity> projectEntityList = new ArrayList<>();
+    @OneToMany(mappedBy = "guestRequest", cascade = CascadeType.ALL)
+    private List<Project> projectEntityList = new ArrayList<>();
 
 
 
