@@ -21,7 +21,7 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String schedulePk;
+    private Long schedulePk;
 
     @Column(nullable = false)
     private LocalDateTime startDate;
