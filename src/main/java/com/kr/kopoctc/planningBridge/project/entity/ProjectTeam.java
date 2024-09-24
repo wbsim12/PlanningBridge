@@ -1,5 +1,6 @@
 package com.kr.kopoctc.planningBridge.project.entity;
 
+import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.kr.kopoctc.planningBridge.common.ProjectTeamResponsibility;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,8 +23,8 @@ public class ProjectTeam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectTeamPK;
 
-    @Column(name = "user_pk")
-    private String userPK;
+/*    @Column(name = "user_pk")
+    private String userPK;*/
 
     private ProjectTeamResponsibility responsibility;
 
@@ -50,6 +51,10 @@ public class ProjectTeam {
     @ManyToOne
     @JoinColumn(name = "project_pk")
     private Project project;
+
+    @ManyToOne
+    @JoinColumn(name = "user_pk")
+    private User userPK;
 
     @OneToMany(mappedBy = "projectTeam", cascade = CascadeType.ALL)
     private List<ProjectHistory> projectHistoryList = new ArrayList<>();
