@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link href="/css/layouts/header.css" rel="stylesheet">
+    <script>
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.nextElementSibling;
+            dropdown.classList.toggle('show');
+        }
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <div class="header-left">
+        <img src="/images/icons/bell.png" alt="Notification Icon" class="header-icon">
+        <img src="/images/icons/settings.png" alt="Settings Icon" class="header-icon">
+    </div>
+    <div class="header-right">
+        <div class="user-menu">
+            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+                <img src="/images/icons/user.png" alt="User Icon" class="user-icon">
+                <span class="user-name">심재우</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                    <a href="#" class="dropdown-link">개인정보 관리</a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#" class="dropdown-link">설정</a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#" class="dropdown-link">로그아웃</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
