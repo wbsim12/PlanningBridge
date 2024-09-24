@@ -15,7 +15,8 @@ import java.time.LocalDateTime;
 @Setter
 public class ConfirmRequest {
     @Id
-    private String ConfirmRequestPK;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long ConfirmRequestPK;
 
     private LocalDateTime date;
 

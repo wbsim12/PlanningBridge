@@ -67,4 +67,5 @@ INSERT INTO project_team (project_team_pk, create_date, responsibility, update_d
 VALUES
     ('1', CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1, '1'),
     ('2', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP, 2, '1'),
-    ('3', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP, 1, '2');
+    ('3', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP, 1, '2')
+    ON CONFLICT (project_team_pk) DO NOTHING;

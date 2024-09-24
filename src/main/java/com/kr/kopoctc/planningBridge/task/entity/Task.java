@@ -20,8 +20,9 @@ import java.util.List;
 public class Task {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "task_pk")
-    private String taskPK;
+    private Long taskPK;
 
     private String name;
     private LocalDateTime startDate;

@@ -17,7 +17,8 @@ import java.time.LocalDateTime;
 @Setter
 public class ConfirmResult {
     @Id
-    private String ConfirmResultPK;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long ConfirmResultPK;
 
     private ConfirmStatus status;
     private LocalDateTime date;

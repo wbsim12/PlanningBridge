@@ -1,7 +1,7 @@
 package com.kr.kopoctc.planningBridge.project.dto;
 import com.kr.kopoctc.planningBridge.common.ProjectStatus;
 import com.kr.kopoctc.planningBridge.admin.entity.GuestRequest;
-import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
+import com.kr.kopoctc.planningBridge.project.entity.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,24 +23,24 @@ public class ProjectDTO {
     private LocalDateTime updatedDate;
     private boolean isDeleted;
     private String guestRequestPk;
-    private List<String> projectHistoryEntityList;
-    private List<String> ProjectTeamEntityList;
+    private List<String> projectHistoryList;
+    private List<String> ProjectTeamList;
 
    // DTO -> Entity
-    public ProjectEntity toEntity(GuestRequest guestRequestEntity) {
-        ProjectEntity projectEntity = new ProjectEntity();
-        projectEntity.setProjectPK(this.projectPK);
-        projectEntity.setName(this.name);
-        projectEntity.setStartDate(this.startDate);
-        projectEntity.setEndDate(this.endDate);
-        projectEntity.setPriority(this.priority);
-        projectEntity.setDescription(this.description);
-        projectEntity.setStatus(ProjectStatus.valueOf(this.status));
-        projectEntity.setCreatedDate(this.createdDate);
-        projectEntity.setUpdatedDate(this.updatedDate);
-        projectEntity.setDeleted(this.isDeleted);
-       // projectEntity.setGuestRequestEntity(guestRequestEntity);
-        return projectEntity;
+    public Project toEntity(GuestRequest guestRequest) {
+        Project project = new Project();
+        project.setProjectPK(this.projectPK);
+        project.setName(this.name);
+        project.setStartDate(this.startDate);
+        project.setEndDate(this.endDate);
+        project.setPriority(this.priority);
+        project.setDescription(this.description);
+        project.setStatus(ProjectStatus.valueOf(this.status));
+        project.setCreatedDate(this.createdDate);
+        project.setUpdatedDate(this.updatedDate);
+        project.setDeleted(this.isDeleted);
+       // project.setGuestRequestEntity(guestRequestEntity);
+        return project;
     }
 
     //

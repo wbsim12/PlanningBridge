@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "project")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectEntity {
+public class Project {
     @Id
     @Column(name = "project_pk")
     @SequenceGenerator(
@@ -56,13 +56,13 @@ public class ProjectEntity {
 
     @ManyToOne
     @JoinColumn(name = "guest_request_pk")
-    private GuestRequest guestRequestEntity;
+    private GuestRequest guestRequest;
 
-    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL)
-    private List<ProjectHistoryEntity> projectHistoryEntityList = new ArrayList<>();
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<ProjectHistory> projectHistoryList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "projectEntity", cascade = CascadeType.ALL)
-    private List<ProjectTeamEntity> ProjectTeamEntityList = new ArrayList<>();
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<ProjectTeam> ProjectTeamList = new ArrayList<>();
 
 
 }
