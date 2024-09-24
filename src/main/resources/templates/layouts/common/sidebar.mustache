@@ -8,6 +8,16 @@
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.classList.toggle('collapsed');
+
+            // 전환이 완료된 후 서브메뉴 상태 조정
+            setTimeout(() => {
+                const activeItems = sidebar.querySelectorAll('.menu-item.active');
+                activeItems.forEach(item => {
+                    if (sidebar.classList.contains('collapsed')) {
+                        item.classList.remove('active');
+                    }
+                });
+            }, 300); // CSS 전환 시간과 일치시킴
         }
 
         function toggleSubMenu(event) {

@@ -5,19 +5,20 @@ import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 public class ProjectDTO {
-    private String projectPK;
+    private Long projectPK;
     private String name;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDate startDate;
+    private LocalDate  endDate;
     private String priority;
     private String description;
-    private String status;          // 상태 (PENDING, IN_PROGRESS, COMPLETED, HOLD)
+    private String status = "PENDING";          // 상태 (PENDING, IN_PROGRESS, COMPLETED, HOLD)
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
     private boolean isDeleted;
@@ -34,10 +35,15 @@ public class ProjectDTO {
         projectEntity.setEndDate(this.endDate);
         projectEntity.setPriority(this.priority);
         projectEntity.setDescription(this.description);
-        projectEntity.setStatus(ProjectStatus.valueOf(this.status.toUpperCase()));
+        projectEntity.setStatus(ProjectStatus.valueOf(this.status));
         projectEntity.setCreatedDate(this.createdDate);
         projectEntity.setUpdatedDate(this.updatedDate);
-        projectEntity.setGuestRequestEntity(guestRequestEntity);
+        projectEntity.setDeleted(this.isDeleted);
+       // projectEntity.setGuestRequestEntity(guestRequestEntity);
         return projectEntity;
     }
+
+    //
+
+
 }
