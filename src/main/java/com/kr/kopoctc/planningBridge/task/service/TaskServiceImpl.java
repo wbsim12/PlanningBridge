@@ -1,8 +1,11 @@
 package com.kr.kopoctc.planningBridge.task.service;
 
+import com.kr.kopoctc.planningBridge.admin.entity.User;
+import com.kr.kopoctc.planningBridge.admin.repository.UserRepository;
 import com.kr.kopoctc.planningBridge.task.dto.TaskDTO;
 import com.kr.kopoctc.planningBridge.task.entity.Task;
 import com.kr.kopoctc.planningBridge.task.repository.TaskRepository;
+import com.kr.kopoctc.planningBridge.task.repository.TaskRepositoryCustomImpl;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,47 +19,57 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
 
-    private final TaskRepository taskRepository;
+    @Autowired
+    TaskRepository taskRepository;
 
- /*   @Autowired
+    @Autowired
+    TaskRepositoryCustomImpl taskRepositoryCustom;
+
+    /*   @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }*/
 
+    @Autowired
+    private UserRepository userRepository;
+
     //세션에서부터 얻은 값이라 가정한다.
-    int userPK = 1;
+    //int userPK = 1;
+
+    @Override
+    public User getUserByUserPK(Long userPK) {
+        User user = userRepository.findById(userPK).orElse(null);
+        return user;
+    }
 
     // 로그인 유저의 프로젝트 번호 조회하기
     @Override
-    public List<String> getProjectListPKByUser() {
-
-
-
-        return List.of("account");
+    public List<Long> getProjectListPKByUser(User user) {
+        List<Long> projectPKList = taskRepositoryCustom.getProjectPKByUser(user);
+        return projectPKList;
     }
 
     // 프로젝트 번호 별 Task 조회
     @Override
-    public List<Task> getTaskByProject(String projectPK) {
-        //List<Task> taskList = taskRepository.findByProjectPK(projectPK);
-        //return taskList;
-        return List.of();
+    public List<Task> getTaskByProject(List<Long> projectPK) {
+        List<Task> taskList = taskRepository.findAllById(projectPK);
+        return taskList;
     }
 
     @Override
-    public List<Task> getTaskOnlyMine(String projectPK) {
+    public List<Task> getTaskOnlyMine(Long projectPK) {
         return List.of();
     }
 
     // 프로젝트 번호를 받아와 직책 확인 (PM이나 PL 인가)
     @Override
-    public boolean isProjectAdmin(String projectPK) {
+    public boolean isProjectAdmin(Long projectPK) {
         return false;
     }
 
     // 프로젝트 생성
     @Override
-    public void addTask(TaskDTO taskDTO, String projectTeamPK) {
+    public void addTask(TaskDTO taskDTO, Long projectTeamPK) {
     // task 객체 생성 부분
         LocalDateTime now = LocalDateTime.now();
         Task newTask = taskDTO.toEntity(now);
@@ -74,12 +87,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void updateTask(TaskDTO taskDTO, String projectTeamPK) {
+    public void updateTask(TaskDTO taskDTO, Long projectTeamPK) {
 
     }
 
     @Override
-    public void deleteTask(String taskPK) {
+    public void deleteTask(Long taskPK) {
 
     }
 }
