@@ -22,12 +22,7 @@ import java.util.List;
 public class Project {
     @Id
     @Column(name = "project_pk")
-    @SequenceGenerator(
-            name = "project_seq_gen", // 시퀀스 제너레이터 이름
-            sequenceName = "project_seq", // 실제 DB에 생성될 시퀀스 이름
-            allocationSize = 1 // 기본값은 50인데, 1로 설정하면 1씩 증가
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_seq_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectPK;
 
     private String name;

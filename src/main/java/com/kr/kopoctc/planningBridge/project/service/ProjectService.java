@@ -10,4 +10,6 @@ public interface ProjectService {
    // ProjectEntity saveProject(ProjectDTO projectDTO, String teamMembersJson);
     Project saveProject(ProjectDTO projectDTO);
     void deleteProjectsByIds(List<Long> selectedProjectIds);
+    Project saveProjectWithTeamMembers(ProjectDTO projectDTO, String teamMembersJson);
+
 }

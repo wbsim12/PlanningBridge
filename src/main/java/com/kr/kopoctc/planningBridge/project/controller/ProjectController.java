@@ -29,23 +29,23 @@ public class ProjectController {
         return "project/projectList";
     }
 
-    // 프로젝트 생성 후 전체 조회 페이지로
+/*    // 프로젝트 생성 후 전체 조회 페이지로
     @PostMapping("/newProject")
     public String newProject(ProjectDTO projectDTO) {
         projectService.saveProject(projectDTO);
         return "redirect:/project/projects";
-    }
-   /* // 프로젝트 생성 후 전체 조회 페이지로
+    }*/
+  // 프로젝트 생성 후 전체 조회 페이지로
     @PostMapping("/newProject")
-    public String newProject(ProjectDTO projectDTO, @RequestParam("teamMember") String teamMembersJson) {
+    public String newProject(ProjectDTO projectDTO, @RequestParam("teamMembers") String teamMembersJson) {
         // 팀 멤버 JSON 데이터 로그 출력
         log.info("Received Project Name: {}", projectDTO.getName());
         log.info("Received Team Members: {}", teamMembersJson);
 
-        // teamMembersJson을 파싱하여 처리하는 로직 추가 필요
-        projectService.saveProject(projectDTO, teamMembersJson);
+        // 서비스 계층에서 팀 멤버 정보를 저장
+        projectService.saveProjectWithTeamMembers(projectDTO, teamMembersJson);
         return "redirect:/project/projects";
-    }*/
+    }
     
     // 프로젝트 생성 페이지로 이동
     @GetMapping("/newProject")

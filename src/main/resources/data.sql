@@ -40,13 +40,13 @@ VALUES
 
 -- project
 
-INSERT INTO project (project_pk, create_date, description, end_date, is_deleted, name, priority, start_date, status, update_date, guest_request_pk)
+INSERT INTO project (create_date, description, end_date, is_deleted, name, priority, start_date, status, update_date, guest_request_pk)
 VALUES
-    (1, CURRENT_TIMESTAMP, '새로운 웹사이트 개발', '2024-12-31', false, '웹 리뉴얼 프로젝트', 'high', '2024-01-01', 1, CURRENT_TIMESTAMP, 1),
-    (2, CURRENT_TIMESTAMP, '모바일 앱 업데이트', '2024-09-30', false, '앱 2.0 업그레이드', 'medium', '2024-03-01', 1, CURRENT_TIMESTAMP, 1),
-    (3, CURRENT_TIMESTAMP, '데이터 분석 시스템 구축', '2025-06-30', false, '빅데이터 분석 프로젝트', 'high', '2024-07-01', 1, CURRENT_TIMESTAMP, 2),
-    (4, CURRENT_TIMESTAMP, '고객 지원 시스템 개선', '2024-08-31', false, '고객 서비스 향상 프로젝트', 'low', '2024-02-01', 1, CURRENT_TIMESTAMP, 2),
-    (5, CURRENT_TIMESTAMP, '인공지능 챗봇 개발', '2025-03-31', false, 'AI 고객 상담 프로젝트', 'medium', '2024-04-01', 1, CURRENT_TIMESTAMP, 2)
+    (CURRENT_TIMESTAMP, '새로운 웹사이트 개발', '2024-12-31', false, '웹 리뉴얼 프로젝트', 'high', '2024-01-01', 1, CURRENT_TIMESTAMP, 1),
+    (CURRENT_TIMESTAMP, '모바일 앱 업데이트', '2024-09-30', false, '앱 2.0 업그레이드', 'medium', '2024-03-01', 1, CURRENT_TIMESTAMP, 1),
+    (CURRENT_TIMESTAMP, '데이터 분석 시스템 구축', '2025-06-30', false, '빅데이터 분석 프로젝트', 'high', '2024-07-01', 1, CURRENT_TIMESTAMP, 2),
+    ( CURRENT_TIMESTAMP, '고객 지원 시스템 개선', '2024-08-31', false, '고객 서비스 향상 프로젝트', 'low', '2024-02-01', 1, CURRENT_TIMESTAMP, 2),
+    (CURRENT_TIMESTAMP, '인공지능 챗봇 개발', '2025-03-31', false, 'AI 고객 상담 프로젝트', 'medium', '2024-04-01', 1, CURRENT_TIMESTAMP, 2)
     ON CONFLICT (project_pk) DO NOTHING;
 -- task
 

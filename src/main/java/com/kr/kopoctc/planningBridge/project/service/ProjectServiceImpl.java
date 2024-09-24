@@ -27,8 +27,9 @@ public class ProjectServiceImpl implements ProjectService{
         Project project = projectDTO.toEntity(null);
         return projectRepository.save(project);
     }
-   /* @Override
-    public ProjectEntity saveProject(ProjectDTO projectDTO, String teamMembersJson) {
+
+    @Override
+    public Project saveProjectWithTeamMembers(ProjectDTO projectDTO, String teamMembersJson) {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
@@ -49,9 +50,9 @@ public class ProjectServiceImpl implements ProjectService{
         }
 
         // 이후에 프로젝트 저장 로직 실행
-        ProjectEntity projectEntity = projectDTO.toEntity(null);
-        return projectRepository.save(projectEntity);
-    }*/
+        Project project = projectDTO.toEntity(null);
+        return projectRepository.save(project);
+    }
 
     // 수정진행중 ..
     @Override
