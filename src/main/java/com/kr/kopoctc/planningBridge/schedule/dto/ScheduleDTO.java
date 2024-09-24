@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 public class ScheduleDTO {
 
-    private String schedulePk;
+    private Long schedulePk;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String title;
