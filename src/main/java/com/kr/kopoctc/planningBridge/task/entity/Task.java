@@ -34,7 +34,7 @@ public class Task {
     private boolean is_deleted;
 
     // 프로젝트 객체 생성시 주석풀기
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "project_pk")
     @JsonBackReference
     private Project project;
