@@ -3,7 +3,7 @@ package com.kr.kopoctc.planningBridge.project.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kr.kopoctc.planningBridge.project.dto.ProjectDTO;
-import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
+import com.kr.kopoctc.planningBridge.project.entity.Project;
 import com.kr.kopoctc.planningBridge.project.repository.ProjectRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,14 @@ public class ProjectServiceImpl implements ProjectService{
     private ProjectRepository projectRepository;
 
     @Override
-    public List<ProjectEntity> findAllProjects() {
+    public List<Project> findAllProjects() {
         return projectRepository.findAll();
     }
 
     @Override
-    public ProjectEntity saveProject(ProjectDTO projectDTO) {
-        ProjectEntity projectEntity = projectDTO.toEntity(null);
-        return projectRepository.save(projectEntity);
+    public Project saveProject(ProjectDTO projectDTO) {
+        Project project = projectDTO.toEntity(null);
+        return projectRepository.save(project);
     }
    /* @Override
     public ProjectEntity saveProject(ProjectDTO projectDTO, String teamMembersJson) {

@@ -1,13 +1,13 @@
 package com.kr.kopoctc.planningBridge.project.service;
 
 import com.kr.kopoctc.planningBridge.project.dto.ProjectDTO;
-import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
+import com.kr.kopoctc.planningBridge.project.entity.Project;
 
 import java.util.List;
 
 public interface ProjectService {
-    List<ProjectEntity> findAllProjects();
+    List<Project> findAllProjects();
    // ProjectEntity saveProject(ProjectDTO projectDTO, String teamMembersJson);
-    ProjectEntity saveProject(ProjectDTO projectDTO);
+    Project saveProject(ProjectDTO projectDTO);
     void deleteProjectsByIds(List<Long> selectedProjectIds);
 }
