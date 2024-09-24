@@ -7,8 +7,7 @@ import java.util.List;
 
 public interface ProjectService {
     List<ProjectEntity> findAllProjects();
+   // ProjectEntity saveProject(ProjectDTO projectDTO, String teamMembersJson);
     ProjectEntity saveProject(ProjectDTO projectDTO);
     void deleteProjectsByIds(List<Long> selectedProjectIds);
-
-    ProjectDTO getProjectById(Long projectID);
 }
