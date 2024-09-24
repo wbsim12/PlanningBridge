@@ -3,34 +3,44 @@ package com.kr.kopoctc.planningBridge.task.service;
 import com.kr.kopoctc.planningBridge.task.dto.TaskDTO;
 import com.kr.kopoctc.planningBridge.task.entity.Task;
 import com.kr.kopoctc.planningBridge.task.repository.TaskRepository;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
+@Transactional
+@RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
 
-    @Autowired
+ /*   @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-    }
+    }*/
 
-    String account = "kopo06";
+    //세션에서부터 얻은 값이라 가정한다.
+    int userPK = 1;
 
     // 로그인 유저의 프로젝트 번호 조회하기
     @Override
-    public String getProjectPKByUser() {
-        return "";
+    public List<String> getProjectListPKByUser() {
+
+
+
+        return List.of("account");
     }
 
     // 프로젝트 번호 별 Task 조회
     @Override
     public List<Task> getTaskByProject(String projectPK) {
-        //List<Task> taskList = taskRepository.findByProjectPK(projectPK);
-        //return taskList;
-        return List.of();
+        List<Task> taskList = taskRepository.findByProjectPK(projectPK);
+        return taskList;
+
     }
 
     @Override

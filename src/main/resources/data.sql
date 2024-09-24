@@ -62,3 +62,9 @@ VALUES
     ('8', CURRENT_TIMESTAMP, '사용자 매뉴얼 작성', '2024-09-30', '매뉴얼 제작', 3, '2024-09-01', 3, NULL, '4', false),
     ('9', CURRENT_TIMESTAMP, 'AI 모델 훈련', '2024-10-31', '챗봇 AI 학습', 1, '2024-10-01', 3,  NULL, '5', false)
     ON CONFLICT (task_pk) DO NOTHING;
+
+INSERT INTO project_team (project_team_pk, create_date, responsibility, update_date, user_pk, project_pk)
+VALUES
+    ('1', CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, 1, '1'),
+    ('2', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP, 2, '1'),
+    ('3', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP, 1, '2');

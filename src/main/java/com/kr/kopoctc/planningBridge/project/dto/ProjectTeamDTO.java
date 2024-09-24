@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ProjectTeamDTO {
-    private String projectTeamPK;
+    private Long projectTeamPK;
     private String userPK;
     private String responsibility;
     private LocalDateTime createdDate;

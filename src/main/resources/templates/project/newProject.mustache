@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Project</title>
+    <script>
+        // 팀원 정보를 저장할 배열
+        let teamMembers = [];
+
+        // 팀원을 추가하는 함수
+        function addTeamMember() {
+            const team = document.getElementById("team").value;
+            const responsibility = document.getElementById("responsibility").value;
+            const teamMember = document.getElementById("teamMember").value;
+
+            // 선택한 팀원 정보 객체 생성
+            const member = {
+                team: team,
+                responsibility: responsibility,
+                teamMember: teamMember
+            };
+
+            // 팀원 정보를 배열에 추가
+            teamMembers.push(member);
+
+            // 화면에 추가된 팀원 정보 표시
+            const memberList = document.getElementById("teamMemberList");
+            const newMember = document.createElement("li");
+            newMember.innerText = `Team: ${team}, Responsibility: ${responsibility}, Team Member: ${teamMember}`;
+            memberList.appendChild(newMember);
+
+            // 숨겨진 input 필드에 팀원 정보 추가 (서버로 전송할 수 있도록)
+            const hiddenField = document.getElementById("teamMembersField");
+            hiddenField.value = JSON.stringify(teamMembers);
+        }
+    </script>
+</head>
+<body>
+<h1>New Project</h1>
+Project Name
+<form action = "/project/newProject" method="post">
+    name
+    <input type="text" name = "name">
+    <br>
+    Start
+    <input type="date" name = "startDate">
+    <br>
+    End
+    <input type="date" name = "endDate">
+    <br>
+    Priority
+    <select name = "priority" id = "priority" >
+        {{#priorities}}
+        <option value="{{name}}">{{name}}</option>
+        {{/priorities}}priorities}}
+    </select>
+    <br>
+    Team
+    <select name = "teamOfPL" id = "teamOfPL" >
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+
+    Project Leader
+    <select name = "pl" id = "pl">
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+    <br>
+    Team
+    <select name = "team" id = "team">
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+
+    Responsibilities
+    <select name = "responsibility" id = "responsibility">
+        {{#responsibilities}}
+            <option value="{{name}}">{{name}}</option>
+        {{/responsibilities}}priorities}}
+    </select>
+
+    Team Member
+    <select name = "teamMember" id = "teamMember">
+        <option value="t1">t1</option>
+        <option value="t2">t1</option>
+        <option value="t3">t1</option>
+        <option value="t4">t1</option>
+    </select>
+   <!-- <button type="button" onclick="addTeamMember()">Add Team Member</button><br>
+    <ul id="teamMemberList"></ul>-->
+    <input type="hidden" name="teamMembers" id="teamMembersField">
+    <br>
+    Description
+    <input type = "text" name = "description">
+
+    <button type = "submit"> 생성 </button>
+    <a  href = "/project/projects">취소</a>
+
+</form>
+</body>
+</html>
