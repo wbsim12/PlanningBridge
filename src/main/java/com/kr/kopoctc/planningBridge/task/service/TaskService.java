@@ -1,13 +1,30 @@
 package com.kr.kopoctc.planningBridge.task.service;
 
+import com.kr.kopoctc.planningBridge.project.entity.ProjectEntity;
+import com.kr.kopoctc.planningBridge.task.dto.TaskDTO;
 import com.kr.kopoctc.planningBridge.task.entity.Task;
 
+import java.util.List;
+
 public interface TaskService {
-    // 유저 별 프로젝트 번호 조회하기
+    // 로그인 유저의 프로젝트 번호 조회하기
     public String getProjectPKByUser();
 
     // 프로젝트 번호 별 Task 조회
-    public Task getTaskByProject();
+    public List<Task> getTaskByProject(String projectPK);
 
-    //
+    // 내게 할당된 Task 만 조회하기
+    public List<Task> getTaskOnlyMine(String projectPK);
+
+    // 프로젝트 번호를 받아와 직책 확인 (PM이나 PL 인가)
+    public boolean isProjectAdmin(String projectPK);
+
+    // 프로젝트 생성
+    public void addTask(TaskDTO taskDTO, String projectTeamPK);
+
+    // 프로젝트 수정
+    public void updateTask(TaskDTO taskDTO, String projectTeamPK);
+
+    //프로젝트 삭제
+    public void deleteTask(String taskPK);
 }

@@ -16,13 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/task")
 @Slf4j
 public class TaskController {
-    @Autowired
-    private TaskRepository taskRepository;
+    //@Autowired private TaskRepository taskRepository;
 
     @GetMapping(value = {"", "/"})
     public String showTaskList(Model model) {
         // 로그인 확인
-        // 유저 별 프로젝트 번호 조회하기
+        // 로그인 유저의 프로젝트 번호 조회하기
         // 프로젝트 번호 별 Task 조회
         return "task/taskList";
     }
@@ -30,8 +29,7 @@ public class TaskController {
     @GetMapping(value = {"/create"})
     public String getTaskCreateForm(Model model) {
         // 로그인 확인
-        // 프로젝트 번호 확인
-        // 직책 확인
+        // 프로젝트 번호를 받아와 직책 확인 (PM이나 PL 인가)
         return "task/taskCreateForm";
     }
 

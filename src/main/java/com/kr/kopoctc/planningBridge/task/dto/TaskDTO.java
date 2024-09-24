@@ -7,27 +7,28 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class TaskDTO {
 
     private String name;
-    private String startDate;
-    private String endDate;
-    private String desc;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private String description;
     private Priority priority;
     private TaskStatus status;
-    private String createdDate;
-    private String updatedDate;
 
-    public Task toEntity = Task.builder()
-            .name(this.name)
-            .startDate(this.startDate)
-            .endDate(this.endDate)
-            .description(this.desc)
-            .priority(this.priority)
-            .status(this.status)
-            .createdDate(this.createdDate)
-            .updatedDate(this.updatedDate)
-            .build();
+    public Task toEntity(LocalDateTime currDate) {
+        return Task.builder()
+                .name(this.name)
+                .startDate(this.startDate)
+                .endDate(this.endDate)
+                .description(this.description)
+                .priority(this.priority)
+                .status(this.status)
+                .createdDate(currDate)
+                .build();
+    }
 }

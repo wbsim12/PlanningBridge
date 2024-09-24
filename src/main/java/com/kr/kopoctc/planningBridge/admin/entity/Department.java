@@ -14,9 +14,9 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long departmentPK;
 
-    @OneToMany(mappedBy = "department")
-    private List<User> users;
-
     @Column
     private String name;
+
+    @Column
+    private boolean IsDeleted;
 }

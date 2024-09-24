@@ -40,11 +40,13 @@ public class UserDTO {
 
     private boolean checkGuest = false;
 
-    private String departmentPK;
-
-    private String positionPK;
-
     private String company;
+
+    private Integer departmentPK;
+
+    private Integer positionPK;
+
+    private boolean isDeleted = false;
 
     private LocalDateTime createdDate;
 
@@ -63,7 +65,7 @@ public class UserDTO {
                 .checkAdmin(this.checkAdmin)
                 .isActive(this.isActive)
                 .phoneNumber(this.phoneNumber)
-                .lastChanagedPassword(LocalDateTime.now())
+                .lastChangedPassword(LocalDateTime.now())
                 .build();
 
         // account, email, checkAdmin, name, checkGuest, phoneNumber, departmentPK, positionPK

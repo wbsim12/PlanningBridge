@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "user_seq", sequenceName = "users_id_seq", allocationSize = 1)
+    private Long userPK;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String account;
 
     @Column
@@ -40,7 +40,7 @@ public class User {
     private boolean isActive = false;
 
     @Column
-    private LocalDateTime lastChanagedPassword;
+    private LocalDateTime lastChangedPassword;
 
     @Column
     private boolean passwordExpired = false;
@@ -51,12 +51,12 @@ public class User {
     @Column
     private boolean checkGuest = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "department_pk")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_pk", nullable = true)
     private Department department;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "position_pk")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "position_pk", nullable = true)
     private Position position;
 
     @Column
@@ -64,6 +64,9 @@ public class User {
 
     @Column
     private LocalDateTime updatedDate;
+
+    @Column
+    private boolean isDeleted;
 
 }
 

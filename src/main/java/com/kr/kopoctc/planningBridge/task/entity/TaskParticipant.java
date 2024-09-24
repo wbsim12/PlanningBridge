@@ -16,7 +16,6 @@ public class TaskParticipant {
     @Id
     private String taskParticipantPK;
 
-
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_pk")
     @JsonBackReference

@@ -74,10 +74,9 @@
             <label for="departmentPK">Department:</label>
             <select id="departmentPK" name="departmentPK">
                 <option value="">Select Department</option>
-                <option value="DEPT001">Human Resources</option>
-                <option value="DEPT002">Finance</option>
-                <option value="DEPT003">IT</option>
-                <option value="DEPT004">Marketing</option>
+                {{#departments}}
+                    <option value="{{departmentPK}}">{{name}}</option>
+                {{/departments}}
             </select>
         </div>
 
@@ -85,10 +84,9 @@
             <label for="positionPK">Position:</label>
             <select id="positionPK" name="positionPK">
                 <option value="">Select Position</option>
-                <option value="POS001">부장</option>
-                <option value="POS002">대리</option>
-                <option value="POS003">주임</option>
-                <option value="POS004">사원</option>
+                {{#positions}}
+                    <option value="{{positionPK}}">{{name}}</option>
+                {{/positions}}
             </select>
         </div>
 
