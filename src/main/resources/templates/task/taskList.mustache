@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1, h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .subtasks { margin-top: 30px; }
+    </style>
+</head>
+<body>
+<h1>Task Details</h1>
+
+<table>
+    <tr>
+        <th>Task ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Created Date</th>
+        <th>Is Deleted</th>
+        <th>Project</th>
+        <th>Parent Task</th>
+    </tr>
+    {{#tasks}}
+        <tr>
+            <td>{{taskPK}}</td>
+            <td>{{name}}</td>
+            <td>{{description}}</td>
+            <td>{{startDate}}</td>
+            <td>{{endDate}}</td>
+            <td>{{priority}}</td>
+            <td>{{status}}</td>
+            <td>{{createdDate}}</td>
+            <td>{{is_deleted}}</td>
+            <td>{{project.name}}</td>
+            <td>
+                {{#parentTask}}
+                    {{name}} (ID: {{taskPK}})
+                {{/parentTask}}
+                {{^parentTask}}
+                    N/A
+                {{/parentTask}}
+            </td>
+        </tr>
+    {{/tasks}}
+</table>
+
+{{#tasks}}
+    {{#subTaskList}}
+        <div class="subtasks">
+            <h2>Sub-tasks for {{name}} (ID: {{taskPK}})</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+                {{#.}}
+                    <tr>
+                        <td>{{taskPK}}</td>
+                        <td>{{name}}</td>
+                        <td>{{status}}</td>
+                        <td>{{startDate}}</td>
+                        <td>{{endDate}}</td>
+                    </tr>
+                {{/.}}
+            </table>
+        </div>
+    {{/subTaskList}}
+{{/tasks}}
+</body>
+</html>

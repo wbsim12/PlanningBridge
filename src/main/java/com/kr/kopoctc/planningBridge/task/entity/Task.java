@@ -56,17 +56,4 @@ public class Task {
                 ", name='" + name + '\'' +
                 '}';
     }
-
-    /*    public Task(String taskPK, String name, String startDate, String endDate, String desc, Priority priority, TaskStatus status, String createdDate, String updatedDate) {
-        this.taskPK = taskPK;
-        this.name = name;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.desc = desc;
-        this.priority = priority;
-        this.status = status;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
-    }*/
-
 }

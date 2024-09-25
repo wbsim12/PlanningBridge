@@ -8,4 +8,6 @@ import java.util.List;
 public interface TaskRepositoryCustom {
     List<Long> getProjectPKByUser(User user);
     List<Task> getTaskListByProjectPKList(List<Long> projectPKList);
+    //List<Tuple> getProjectInfoByUser(User user);
+
 }

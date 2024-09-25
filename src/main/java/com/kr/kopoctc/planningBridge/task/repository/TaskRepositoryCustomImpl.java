@@ -2,9 +2,11 @@ package com.kr.kopoctc.planningBridge.task.repository;
 
 import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.kr.kopoctc.planningBridge.task.entity.Task;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import static com.kr.kopoctc.planningBridge.project.entity.QProjectTeam.projectTeam;
 import static com.kr.kopoctc.planningBridge.task.entity.QTask.task;
 import java.util.List;
@@ -15,9 +17,7 @@ public class TaskRepositoryCustomImpl implements TaskRepositoryCustom{
     @Autowired
     private JPAQueryFactory jpaQueryFactory;
 
-
-    //예시.
-
+    //예시
    /* @Override
     public List<BoardItem> getAll() {
         return jpaQueryFactory
@@ -25,7 +25,6 @@ public class TaskRepositoryCustomImpl implements TaskRepositoryCustom{
                 .join(boardItem.userItem, userItem).fetchJoin()
                 .fetch();
     }
-
         @Override
         public List<String> getAllStatuses() {
             return jpaQueryFactory
@@ -33,7 +32,6 @@ public class TaskRepositoryCustomImpl implements TaskRepositoryCustom{
                     .from(boardItem)
                     .fetch()
                 */
-
 
     @Override
     public List<Long> getProjectPKByUser(User user) {
@@ -52,6 +50,28 @@ public class TaskRepositoryCustomImpl implements TaskRepositoryCustom{
                 .where(task.project.projectPK.in(projectPKList))
                 .fetch();
     }
+
+   /* @Override
+    public List<Tuple> getProjectInfoByUser(User user) {
+        return jpaQueryFactory
+                .select(Projections.constructor(ProjectInfoDto.class,
+                        projectTeam.project.projectPK,
+                        projectTeam.project.name))
+                .from(projectTeam)
+                .where(projectTeam.userPK.eq(user))
+                .fetch();
+    }*/
+
+/*
+    @Override
+    public List<Task> getTaskListByProjectPK(Long projectPK) {
+        return jpaQueryFactory
+                .select(task)
+                .from(task)
+                .where(task.project.projectPK.eq(projectPK))
+                .fetch();
+    }
+*/
 
 
 }
