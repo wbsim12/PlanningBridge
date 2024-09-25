@@ -6,6 +6,7 @@ import com.kr.kopoctc.planningBridge.admin.repository.DepartmentRepository;
 import com.kr.kopoctc.planningBridge.admin.repository.PositionRepository;
 import com.kr.kopoctc.planningBridge.admin.service.UserServiceImpl;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import com.kr.kopoctc.planningBridge.admin.dto.UserDTO;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/admin")
 public class UserController {
@@ -23,12 +25,6 @@ public class UserController {
     private final UserServiceImpl userServiceImpl;
     private final DepartmentRepository departmentRepository;
     private final PositionRepository positionRepository;
-
-    public UserController(UserServiceImpl userServiceImpl, DepartmentRepository departmentRepository, PositionRepository positionRepository) {
-        this.userServiceImpl = userServiceImpl;
-        this.departmentRepository = departmentRepository;
-        this.positionRepository = positionRepository;
-    }
 
     @GetMapping("/registerUser")
     public String createUserForm(Model model) {

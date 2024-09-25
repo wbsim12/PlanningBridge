@@ -1,5 +1,6 @@
 package com.kr.kopoctc.planningBridge.admin.entity;
 
+import com.kr.kopoctc.planningBridge.project.entity.ProjectTeam;
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -68,6 +69,8 @@ public class User {
     @Column
     private boolean isDeleted;
 
+    @Column
+    private String role;
 }
 
 

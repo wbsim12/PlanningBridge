@@ -1,7 +1,5 @@
 package com.kr.kopoctc.planningBridge.admin.service;
 
-import com.kr.kopoctc.planningBridge.admin.entity.Department;
-import com.kr.kopoctc.planningBridge.admin.entity.Position;
 import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.kr.kopoctc.planningBridge.admin.entity.Guest;
 import com.kr.kopoctc.planningBridge.admin.dto.UserDTO;
@@ -10,8 +8,7 @@ import com.kr.kopoctc.planningBridge.admin.repository.GuestRepository;
 import com.kr.kopoctc.planningBridge.admin.repository.PositionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.kr.kopoctc.planningBridge.admin.repository.UserRepository;
 
@@ -23,7 +20,7 @@ import java.time.LocalDateTime;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final GuestRepository guestRepository;
     private final PositionRepository positionRepository;
     private final DepartmentRepository departmentRepository;
@@ -41,7 +38,13 @@ public class UserServiceImpl implements UserService {
 
         log.info("null이 말이야");
 
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // 비밀번호 인코딩
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); // 비밀번호 인코딩
+
+        if (userDTO.isCheckAdmin()) {
+            user.setRole("ROLE_ADMIN");
+        } else {
+            user.setRole("ROLE_USER");
+        }
 
         userRepository.save(user);
 

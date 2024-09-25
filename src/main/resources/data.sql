@@ -17,13 +17,18 @@ ON CONFLICT (positionpk) DO NOTHING;
 
 INSERT INTO users (userpk, account, password, email, phone_number, name, is_active,
                    last_changed_password, password_expired, check_admin, check_guest, department_pk,
-                   position_pk, created_date, updated_date, is_deleted)
+                   position_pk, created_date, updated_date, role, is_deleted)
 SELECT nextval('users_id_seq'), t.*
 FROM (
          VALUES
-             ('user001', '111111111', 'user001@naver.com', '010-1111-1111', '일반 사용자', false, NOW(), false, false, false, 1, 1, NOW(), NOW(), false),
-             ('admin001', '111111111', 'admin001@naver.com', '010-4315-1158', '관리자', false, NOW(), false, true, false, 2, 2, NOW(), NOW(), false)
-     ) AS t(account, password, email, phone_number, name, is_active, last_changed_password, password_expired, check_admin, check_guest, department_pk, position_pk, created_date, updated_date, is_deleted)
+             ('user001', '111111111', 'user001@naver.com', '010-1111-1111',
+              '일반 사용자', false, NOW(), false, false, false,
+              1, 1, NOW(), NOW(), 'ROLE_USER', false),
+             ('admin001', '111111111', 'admin001@naver.com', '010-4315-1158',
+              '관리자', false, NOW(), false, true, false,
+              2, 2, NOW(), NOW(), 'ROLE_ADMIN', false)
+     ) AS t(account, password, email, phone_number, name, is_active, last_changed_password, password_expired,
+         check_admin, check_guest, department_pk, position_pk, created_date, updated_date, role, is_deleted)
 WHERE NOT EXISTS (
           SELECT 1
           FROM users u
