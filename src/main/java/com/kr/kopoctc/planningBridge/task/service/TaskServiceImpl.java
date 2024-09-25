@@ -52,7 +52,7 @@ public class TaskServiceImpl implements TaskService {
     // 프로젝트 번호 별 Task 조회
     @Override
     public List<Task> getTaskByProject(List<Long> projectPK) {
-        List<Task> taskList = taskRepository.findAllById(projectPK);
+        List<Task> taskList = taskRepositoryCustom.getTaskListByProjectPKList(projectPK);
         return taskList;
     }
 

@@ -47,31 +47,66 @@ class TaskServiceImplTest {
     private TaskRepositoryCustom taskRepositoryCustom;
 
 
+    private static final Long EXISTING_USER_PK = 1L;
 
+    @BeforeEach
+    void setUp() {
+        // 필요한 경우 테스트 데이터 설정
+    }
+
+    // 유저 아이디로 유저 찾기
     @Test
-    void getUserByUserPK() {
+    void shouldReturnUserWhenUserPKExists() {
         // When
-        User user = taskService.getUserByUserPK(1L);
-        System.out.println();
+        User user = taskService.getUserByUserPK(EXISTING_USER_PK);
+
         // Then
         assertNotNull(user);
-        assertEquals(1L, user.getUserPK());
+        assertEquals(EXISTING_USER_PK, user.getUserPK());
     }
 
+    // 유저 존재 확인 실패테스트
     @Test
-    void getProjectPKByUser() {
-        User user = taskService.getUserByUserPK(1L);
-        List<Long> projectPKList = taskService.getProjectListPKByUser(user);
-        System.out.println("======================");
-        System.out.println(projectPKList.toString());
+    void shouldThrowExceptionWhenUserPKDoesNotExist() {
+        // Given
+        Long nonExistingUserPK = 999L;
+
+        // When
+        User user = taskService.getUserByUserPK(nonExistingUserPK);
+
+        // Then
+        assertNull(user);
     }
 
+    // 유저로 프로젝트 번호 리스트 찾기
     @Test
-    void getTaskByProject() {
-        User user = taskService.getUserByUserPK(1L);
+    void shouldReturnProjectPKListForExistingUser() {
+        // Given
+        User user = taskService.getUserByUserPK(EXISTING_USER_PK);
+
+        // When
         List<Long> projectPKList = taskService.getProjectListPKByUser(user);
-        List<Task> taskList = taskRepository.findAllById(projectPKList);
-        System.out.println(taskList.toString());
+
+        // Then
+        assertNotNull(projectPKList);
+        assertFalse(projectPKList.isEmpty());
+        // 추가적인 검증 로직 (예: 특정 프로젝트 PK가 포함되어 있는지 확인)
+    }
+
+    // 프로젝트 번호 리스트로 태스크 객체얻기
+    @Test
+    void shouldReturnTaskListForGivenProjectPKList() {
+        // Given
+        User user = taskService.getUserByUserPK(EXISTING_USER_PK);
+        List<Long> projectPKList = taskService.getProjectListPKByUser(user);
+
+        // When
+        List<Task> taskList = taskService.getTaskByProject(projectPKList);
+
+        // Then
+        assertNotNull(taskList);
+        assertFalse(taskList.isEmpty());
+        // 추가적인 검증 로직 (예: 특정 조건을 만족하는 태스크가 포함되어 있는지 확인)
     }
 
     @Test
