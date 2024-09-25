@@ -1,17 +1,111 @@
 /* styles.css */
 
 /* 공통 스타일 */
-body, html {
+body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    height: 100%;
     overflow: hidden;
 }
 
 .container {
     display: flex;
     height: 100vh;
+}
+
+/* header 스타일 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    height: 60px;
+    width: calc(100% - 250px); /* sidebar 너비를 고려 */
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: width 0.3s ease;
+}
+
+.sidebar.collapsed + .main .header {
+    width: calc(100% - 60px); /* sidebar가 축소되었을 때의 너비 */
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px; /* 오른쪽 정렬을 위해 margin-right를 margin-left로 변경 */
+    cursor: pointer;
+}
+
+.content {
+    margin-top: 60px; /* Header의 높이만큼 여백 추가 */
+    padding: 20px;
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+    margin: 5px 0 0;
+    display: none;
+    min-width: 200px; /* 드롭다운 메뉴의 최소 너비를 늘림 */
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 8px 20px;
+}
+
+.dropdown-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* 링크 영역을 넓히기 위해 block으로 변경 */
+    padding: 8px 20px; /* 패딩 추가로 클릭 영역 확대 */
+}
+
+.dropdown-link:hover {
+    background-color: #f0f0f0;
 }
 
 /* sidebar 스타일 */
@@ -22,11 +116,14 @@ body, html {
     height: 100vh;
     overflow-y: auto;
     transition: width 0.3s ease;
-    flex-shrink: 0;
 }
 
 .sidebar.collapsed {
     width: 60px;
+}
+
+.sidebar.collapsed + .main .header {
+    width: calc(100% - 60px); /* sidebar가 축소되었을 때의 너비 */
 }
 
 .sidebar-header {
@@ -50,6 +147,14 @@ body, html {
     margin: 0;
 }
 
+/* main 스타일 */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+}
+
 .menu-item {
     display: flex;
     flex-direction: column;
@@ -60,119 +165,61 @@ body, html {
     color: #ecf0f1;
     display: flex;
     align-items: center;
-    padding: 15px;
-    transition: background-color 0.3s;
-}
-
-.menu-link:hover {
-    background-color: #34495E;
+    padding: 0 15px;
+    width: 100%;
+    height: 60px;
 }
 
 .menu-icon {
     margin-right: 10px;
+    flex-shrink: 0;
     width: 24px;
     height: 24px;
     filter: invert(1);
 }
 
-/* main 스타일 */
-.main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    transition: margin-left 0.3s ease;
+.menu-text {
+    transition: opacity 0.3s, visibility 0.3s;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* header 스타일 */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    height: 60px;
-    width: 100%;
+.sidebar.collapsed .menu-text {
+    opacity: 0;
+    visibility: hidden;
 }
 
-.header-left, .header-right {
-    display: flex;
-    align-items: center;
-}
-
-.header-icon {
-    width: 24px;
-    height: 24px;
-    margin-left: 15px;
-    cursor: pointer;
-}
-
-.content {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-/* User menu styles */
-.user-menu {
-    position: relative;
-}
-
-.dropdown-toggle {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-}
-
-.user-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    padding: 10px 0;
-    margin: 5px 0 0;
+.submenu {
     display: none;
-    min-width: 200px;
+    flex-direction: column;
+    background-color: #5D6D7E;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    padding: 0;
 }
 
-.dropdown-menu.show {
-    display: block;
+.menu-item.active .submenu {
+    display: flex;
+    max-height: 500px;
 }
 
-.dropdown-item {
-    padding: 8px 20px;
-}
-
-.dropdown-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    padding: 8px 20px;
-}
-
-.dropdown-link:hover {
-    background-color: #f0f0f0;
-}
-
-/* Collapsed sidebar adjustments */
-.sidebar.collapsed .menu-text,
 .sidebar.collapsed .submenu {
     display: none;
 }
 
+.submenu-item {
+    padding: 0 15px 0 30px;
+    height: 40px;
+}
+
+.submenu-item .menu-link {
+    height: 40px;
+    padding: 0;
+}
+
+/* Ensure icons are centered when sidebar is collapsed */
 .sidebar.collapsed .menu-link {
     justify-content: center;
 }
