@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface TaskRepository extends JpaRepository<Task, String> {
+public interface TaskRepository extends JpaRepository<Task, Long> {
     //List<Task> findByProject_ProjectPK(String projectPK);
     //List<Task> findByProjectPK(String projectPK);
 }

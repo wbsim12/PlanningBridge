@@ -1,9 +1,10 @@
 package com.kr.kopoctc.planningBridge.task.repository;
 
+import com.kr.kopoctc.planningBridge.admin.entity.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import static com.kr.kopoctc.planningBridge.project.entity.QProjectTeamEntity.projectTeamEntity;
+import static com.kr.kopoctc.planningBridge.project.entity.QProjectTeam.projectTeam;
 import java.util.List;
 
 @Repository
@@ -11,6 +12,7 @@ public class TaskRepositoryCustomImpl implements TaskRepositoryCustom{
 
     @Autowired
     private JPAQueryFactory jpaQueryFactory;
+
 
     //예시.
 
@@ -30,16 +32,15 @@ public class TaskRepositoryCustomImpl implements TaskRepositoryCustom{
                     .fetch()
                 */
 
-    //admin 쪽 userPK 와 projectTeam 의 userPK가 이어져있지 않아서 오류남. 두 변수의 데이터 타입도 다름.
-/*
+
     @Override
-    public List<String> getProjectPKByUserPK(int userPK) {
+    public List<Long> getProjectPKByUser(User user) {
         return jpaQueryFactory
-                .select(projectTeamEntity.projectTeamPK)
-                .from(projectTeamEntity)
-                .where(projectTeamEntity.userPK.eq(userPK))
+                .select(projectTeam.projectTeamPK)
+                .from(projectTeam)
+                .where(projectTeam.userPK.eq(user))
                 .fetch();
     }
-*/
+
 
 }
