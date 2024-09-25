@@ -1,6 +1,7 @@
 package com.kr.kopoctc.planningBridge.task.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kr.kopoctc.planningBridge.common.Priority;
 import com.kr.kopoctc.planningBridge.common.TaskStatus;
 import com.kr.kopoctc.planningBridge.project.entity.Project;
@@ -11,7 +12,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -36,18 +36,28 @@ public class Task {
     // 프로젝트 객체 생성시 주석풀기
     @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "project_pk")
-    @JsonBackReference
     private Project project;
 
     // 셀프조인
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_task_pk")
+    @JsonBackReference
     private Task parentTask;
 
+    @Builder.Default
     @OneToMany (mappedBy = "parentTask", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Task> subTaskList = new ArrayList<>();
 
-/*    public Task(String taskPK, String name, String startDate, String endDate, String desc, Priority priority, TaskStatus status, String createdDate, String updatedDate) {
+    @Override
+    public String toString() {
+        return "Task{" +
+                "taskPK=" + taskPK +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    /*    public Task(String taskPK, String name, String startDate, String endDate, String desc, Priority priority, TaskStatus status, String createdDate, String updatedDate) {
         this.taskPK = taskPK;
         this.name = name;
         this.startDate = startDate;
