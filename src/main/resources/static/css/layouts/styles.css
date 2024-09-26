@@ -17,19 +17,20 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0px 20px;
     background-color: #f5f5f5;
     border-bottom: 1px solid #ddd;
     height: 60px;
-    width: calc(100% - 250px); /* sidebar 너비를 고려 */
     position: fixed;
     top: 0;
     right: 0;
-    transition: width 0.3s ease;
+    left: 250px; /* sidebar 너비만큼 왼쪽에서 띄움 */
+    transition: left 0.3s ease;
+    z-index: 1000;
 }
 
 .sidebar.collapsed + .main .header {
-    width: calc(100% - 60px); /* sidebar가 축소되었을 때의 너비 */
+    left: 60px; /* sidebar가 축소되었을 때 header의 위치 조정 */
 }
 
 .header-left, .header-right {
@@ -40,7 +41,7 @@ body {
 .header-icon {
     width: 24px;
     height: 24px;
-    margin-left: 15px; /* 오른쪽 정렬을 위해 margin-right를 margin-left로 변경 */
+    margin-left: 15px;
     cursor: pointer;
 }
 
@@ -51,6 +52,7 @@ body {
     height: calc(100vh - 60px);
 }
 
+/* 사용자 메뉴 스타일 (변경 없음) */
 .user-menu {
     position: relative;
 }
@@ -86,7 +88,7 @@ body {
     padding: 10px 0;
     margin: 5px 0 0;
     display: none;
-    min-width: 200px; /* 드롭다운 메뉴의 최소 너비를 늘림 */
+    min-width: 200px;
 }
 
 .dropdown-menu.show {
@@ -100,8 +102,8 @@ body {
 .dropdown-link {
     text-decoration: none;
     color: inherit;
-    display: block; /* 링크 영역을 넓히기 위해 block으로 변경 */
-    padding: 8px 20px; /* 패딩 추가로 클릭 영역 확대 */
+    display: block;
+    padding: 8px 20px;
 }
 
 .dropdown-link:hover {
@@ -116,29 +118,54 @@ body {
     height: 100vh;
     overflow-y: auto;
     transition: width 0.3s ease;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 0;
+}
+
+.sidebar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .sidebar.collapsed {
     width: 60px;
 }
 
-.sidebar.collapsed + .main .header {
-    width: calc(100% - 60px); /* sidebar가 축소되었을 때의 너비 */
-}
-
 .sidebar-header {
-    padding: 20px;
-    text-align: center;
     background-color: #1A252F;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 60px; /* header와 동일한 높이 */
+    padding: 0 15px; /* 좌우 패딩 추가 */
+    box-sizing: border-box; /* 패딩을 높이에 포함 */
+}
+
+.sidebar-header h2.menu-text {
+    margin: 0;
+    font-size: 18px; /* 글자 크기 조정 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hamburger-menu {
     cursor: pointer;
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.hamburger-menu .menu-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(1); /* 아이콘 색상을 흰색으로 변경 */
 }
 
 .sidebar-menu, .submenu {
@@ -152,9 +179,15 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    margin-left: 250px;
     transition: margin-left 0.3s ease;
 }
 
+.sidebar.collapsed + .main {
+    margin-left: 60px;
+}
+
+/* 메뉴 아이템 스타일 (변경 없음) */
 .menu-item {
     display: flex;
     flex-direction: column;
@@ -203,6 +236,15 @@ body {
 .menu-item.active .submenu {
     display: flex;
     max-height: 500px;
+}
+
+/* sidebar가 접혔을 때의 스타일 */
+.sidebar.collapsed .sidebar-header h2.menu-text {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
 }
 
 .sidebar.collapsed .submenu {
